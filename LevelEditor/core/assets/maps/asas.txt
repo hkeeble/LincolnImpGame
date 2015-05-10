@@ -1,0 +1,8 @@
+01111
+11111
+11011
+11111
+11111
+EOF
+2#2,2:Use these to restore Health!~That'll come in handy...~%2,2
+EOE

@@ -1,0 +1,8 @@
+01111
+11011
+11011
+11111
+11111
+EOF
+10#2,2:This is a message~This is page 2.~Hello~%2,2
+EOE

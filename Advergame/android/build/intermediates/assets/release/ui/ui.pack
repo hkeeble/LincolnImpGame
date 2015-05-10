@@ -1,0 +1,183 @@
+
+ui.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cathedralFloorButton
+  rotate: false
+  xy: 2, 313
+  size: 421, 107
+  orig: 421, 107
+  offset: 0, 0
+  index: -1
+cathedralFloorButtonSelected
+  rotate: false
+  xy: 2, 204
+  size: 421, 107
+  orig: 421, 107
+  offset: 0, 0
+  index: -1
+debugButton
+  rotate: false
+  xy: 934, 924
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+debugButtonGreyOut
+  rotate: false
+  xy: 334, 104
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+debugButtonPressed
+  rotate: false
+  xy: 804, 794
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+endScreen1
+  rotate: false
+  xy: 2, 422
+  size: 800, 600
+  orig: 800, 600
+  offset: 0, 0
+  index: -1
+exitButton
+  rotate: false
+  xy: 934, 958
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+hitButton
+  rotate: false
+  xy: 804, 894
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+pauseButton
+  rotate: false
+  xy: 204, 8
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+pauseOverlay
+  rotate: false
+  xy: 425, 164
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+playButton
+  rotate: false
+  xy: 334, 138
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+replayButton
+  rotate: false
+  xy: 804, 828
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+speechBubble
+  rotate: false
+  xy: 683, 295
+  size: 245, 125
+  orig: 245, 125
+  offset: 0, 0
+  index: -1
+touchBackground
+  rotate: false
+  xy: 2, 2
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+touchKnob
+  rotate: false
+  xy: 204, 74
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+uiBackground
+  rotate: false
+  xy: 683, 190
+  size: 245, 103
+  orig: 245, 103
+  offset: 0, 0
+  index: -1
+
+ui2.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+endScreen2
+  rotate: false
+  xy: 2, 2
+  size: 800, 600
+  orig: 800, 600
+  offset: 0, 0
+  index: -1
+
+ui3.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+loseScreen
+  rotate: false
+  xy: 2, 2
+  size: 800, 600
+  orig: 800, 600
+  offset: 0, 0
+  index: -1
+
+ui4.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+titleScreen
+  rotate: false
+  xy: 2, 2
+  size: 800, 600
+  orig: 800, 600
+  offset: 0, 0
+  index: -1
+
+ui5.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+winScreen
+  rotate: false
+  xy: 2, 2
+  size: 800, 600
+  orig: 800, 600
+  offset: 0, 0
+  index: -1
+
+ui6.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cathedralTower
+  rotate: false
+  xy: 2, 2
+  size: 421, 835
+  orig: 421, 835
+  offset: 0, 0
+  index: -1

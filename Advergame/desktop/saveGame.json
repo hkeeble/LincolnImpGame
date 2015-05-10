@@ -1,0 +1,29 @@
+{
+levelData: [
+	{
+		level: 1,
+		score: 50,
+		objectsDestroyed: 1,
+		potentialObjects: 1
+	},
+	{
+		level: 2,
+		score: 0,
+		objectsDestroyed: 0,
+		potentialObjects: 5
+	},
+	{
+		level: 3,
+		score: 0,
+		objectsDestroyed: 0,
+		potentialObjects: 5
+	},
+	{
+		level: 4,
+		score: 0,
+		objectsDestroyed: 0,
+		potentialObjects: 0
+	}
+],
+currentLevel: 4
+}

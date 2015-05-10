@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="C:\Users\Henri\Documents\Projects\Advergame-development\Advergame\android\build\intermediates\pre-dexed\debug\gdx-bullet-1.4.1-4f1c9656d49a7d2a1b18f23508c12fadd2092a77.jar"
+        jar="C:\Users\Henri\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-bullet\1.4.1\56c37e46d31587ddb74e3c6f8c5d7720fbbfb4ae\gdx-bullet-1.4.1.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="56c37e46d31587ddb74e3c6f8c5d7720fbbfb4ae"/>
+    <item
+        dex="C:\Users\Henri\Documents\Projects\Advergame-development\Advergame\android\build\intermediates\pre-dexed\debug\core-1.0-c0a37a18f93f155da5621b1896f02207ea4f9732.jar"
+        jar="C:\Users\Henri\Documents\Projects\Advergame-development\Advergame\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="ddf4bf50efcedc58dc595f5bfba30ca2c85cc0a3"/>
+    <item
+        dex="C:\Users\Henri\Documents\Projects\Advergame-development\Advergame\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.4.1-8bada6ba21be686e71f6590d7bb9dc2fe73a0cd3.jar"
+        jar="C:\Users\Henri\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.4.1\eca2621f18b162c03992bd3ecc226e8a477dc6f9\gdx-backend-android-1.4.1.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="eca2621f18b162c03992bd3ecc226e8a477dc6f9"/>
+    <item
+        dex="C:\Users\Henri\Documents\Projects\Advergame-development\Advergame\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.4.1-9ff33eb57f13f27af238dd49cff820012dc91a9a.jar"
+        jar="C:\Users\Henri\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.4.1\5f54c6af55fa98e8dc469809e952c980e07541a\gdx-freetype-1.4.1.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="05f54c6af55fa98e8dc469809e952c980e07541a"/>
+    <item
+        dex="C:\Users\Henri\Documents\Projects\Advergame-development\Advergame\android\build\intermediates\pre-dexed\debug\gdx-1.4.1-e3baf31e263118f79f6b350edf846855a109bd62.jar"
+        jar="C:\Users\Henri\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.4.1\df470d263438048af74860ca51fc497c16a0c76a\gdx-1.4.1.jar"
+        jumboMode="false"
+        revision="21.1.0"
+        sha1="df470d263438048af74860ca51fc497c16a0c76a"/>
+
+</pre-dex-items>

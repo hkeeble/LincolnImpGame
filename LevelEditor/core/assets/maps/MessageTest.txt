@@ -1,0 +1,8 @@
+11111
+00500
+00000
+00600
+11111
+EOF
+10#1,2:This is a triggered message sequence.~This  is page 2.~%1,2
+EOE
