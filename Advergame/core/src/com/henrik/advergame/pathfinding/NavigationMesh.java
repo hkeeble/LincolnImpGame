@@ -114,19 +114,9 @@ public class NavigationMesh {
     }
 
     public void update(Camera camera, ShapeRenderer renderer, Vector3 playerPosition) {
-
         if (debug) {
             meshTree.renderAllDebug(camera, renderer);
         }
-
-        // Update once every other frame for a performance boost
-        if(needsUpdate) {
-            // Update all scent values - DEPRECATED for now, not using any pathfinding entities
-            // meshTree.update(playerPosition);
-            needsUpdate = false;
-        }
-        else
-            needsUpdate = true;
     }
 
     /**

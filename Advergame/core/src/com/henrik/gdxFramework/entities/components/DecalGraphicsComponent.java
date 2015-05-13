@@ -30,6 +30,8 @@ public class DecalGraphicsComponent {
 
     protected float xRotation;
 
+    private TextureRegion textureRegion;
+    
     boolean inView; // Whether or not this entity is within view
 
     public DecalGraphicsComponent() {
@@ -38,6 +40,8 @@ public class DecalGraphicsComponent {
         renderOffset = new Vector3(0,0,0);
         xRotation = 0;
         billboard = false;
+        
+        textureRegion = new TextureRegion();
     }
 
     public DecalGraphicsComponent(float width, float height, TextureRegion textureRegion) {
@@ -107,7 +111,10 @@ public class DecalGraphicsComponent {
 
     public void setTexture(TextureRegion texture) { decal.setTextureRegion(texture); }
 
-    public void setTexture(Texture texture) { decal.setTextureRegion(new TextureRegion(texture)); }
+    public void setTexture(Texture texture) {
+    	textureRegion.setTexture(texture);
+    	decal.setTextureRegion(textureRegion);
+    }
 
     public boolean isInView() { return inView; }
 }

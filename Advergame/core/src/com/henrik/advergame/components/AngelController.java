@@ -80,6 +80,10 @@ public class AngelController extends StateControllerComponent {
     private final float VISION_AREA_LENGTH = 3.2f;
     private final float VISION_AREA_HALF_WIDTH = 2f;
 
+    private Quaternion rotation;
+    
+    private Vector3 temp;
+    
     // Default sight box vertices
     private final Vector3[] VISION_AREA_VERTICES = new Vector3[] {
             new Vector3(0f, 0f, VISION_AREA_LENGTH),
@@ -95,6 +99,9 @@ public class AngelController extends StateControllerComponent {
         super();
         this.waypoints = waypoints;
 
+        rotation = new Quaternion();
+        
+        temp = new Vector3();
         currentTarget = new Vector3();
         faceDirection = new Vector3();
         moveDirection = new Vector3();
@@ -180,18 +187,20 @@ public class AngelController extends StateControllerComponent {
         currentInstruction = currentWaypoint.getInstructions().get(currentInstructionIndex);
         timeAtStartOfInstruction = System.currentTimeMillis();
 
-        faceDirection = new Vector3(currentInstruction.getDirection().x, 0, currentInstruction.getDirection().y);
+        faceDirection.set(currentInstruction.getDirection().x, 0, currentInstruction.getDirection().y);
         direction.update(faceDirection);
     }
 
-    private Quaternion calculateRotation(GameObject object, float rotation) {
+    private Quaternion calculateRotation(GameObject object, float angle) {
         float current = object.getRotation().getAngleAround(0, 1, 0);
-        return new Quaternion(new Vector3(0, 1, 0), rotation - current);
+        rotation.set(0, 1, 0, angle - current);
+        return rotation;
     }
 
     private void updateMove(GameObject object, GameWorld world) {
-        object.setVelocity(new Vector3(moveDirection).scl(MOVE_SPEED));
-
+        temp.set(moveDirection).scl(MOVE_SPEED);
+    	object.setVelocity(temp);
+    	
         if(object.getPosition().dst(locationAtStartOfMove) >= distanceToTarget) {
             object.setPosition(currentTarget);
             nextWaypoint();
@@ -203,7 +212,7 @@ public class AngelController extends StateControllerComponent {
 
     private void updateWait(GameObject object, GameWorld world) {
         object.setPosition(currentTarget);
-        object.setVelocity(new Vector3(0, 0, 0));
+        object.setVelocity(0, 0, 0);
 
         if(TimeUtils.timeSinceMillis(timeAtStartOfInstruction) >= (long)(currentInstruction.getWaitTimeSeconds()*1000)) {
             currentInstructionIndex++;

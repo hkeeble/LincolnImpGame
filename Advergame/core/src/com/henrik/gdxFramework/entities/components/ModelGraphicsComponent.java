@@ -33,7 +33,9 @@ public class ModelGraphicsComponent {
     public void render(Camera camera, Renderer renderer, GameObject object) {
         model.transform.set(object.getTransform());
 
-        transBoundingBox.set(boundingBox.getMin(), boundingBox.getMax());
+        boundingBox.getMin(min);
+        boundingBox.getMax(max);
+        transBoundingBox.set(min, max);
 
         // Move bounding box
         min.set(boundingBox.min);

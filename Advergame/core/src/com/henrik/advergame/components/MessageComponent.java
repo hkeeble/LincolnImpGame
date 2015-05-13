@@ -3,6 +3,7 @@ package com.henrik.advergame.components;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
@@ -72,11 +73,14 @@ public class MessageComponent extends DecalGraphicsComponent {
 
         } while(currentIndex < text.length());
 
+        GlyphLayout layout = new GlyphLayout();
+        
         // Find the longest line
         int width = 0;
         int widestIndex = 0;
         for(int i = 0; i < lines.size(); i++) {
-            int current = (int)font.getBounds(lines.get(i)).width;
+            layout.setText(font, lines.get(i));
+        	int current = (int)layout.width;
             if(current > width) {
                 width = current;
                 widestIndex = i;
@@ -86,7 +90,8 @@ public class MessageComponent extends DecalGraphicsComponent {
         // Find line heights
         lineHeights = new int[lines.size()];
         for(int i = 0; i < lines.size(); i++) {
-            lineHeights[i] = (int)font.getBounds(lines.get(i)).height;
+        	layout.setText(font, lines.get(i));
+            lineHeights[i] = (int)layout.height;
         }
 
         fbo = new FrameBuffer(Pixmap.Format.RGBA8888, width + (HORIZONTAL_PADDING*2), sum(lineHeights) + (VERTICAL_PADDING*2), false);

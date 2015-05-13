@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.Align;
 import com.henrik.advergame.Game;
 import com.henrik.gdxFramework.core.HUD;
 import com.henrik.gdxFramework.core.Profiler;
@@ -53,22 +53,22 @@ public class DebugHUD extends Table {
         		Game.getUISkin().getDrawable("debugButton"), font);
 
         glProfileTable = new Table();
-        glProfileTable.add(fpsLabel).row().align(Align.left);
+        glProfileTable.add(fpsLabel).align(Align.left).row();
         glProfileTable.getCell(fpsLabel).align(Align.left);
-        glProfileTable.add(glCallLabel).row().align(Align.left);
-        glProfileTable.add(glDrawCallLabel).row().align(Align.left);
-        glProfileTable.add(glShaderSwitchLabel).row().align(Align.left);
-        glProfileTable.add(glTextureBindLabel).row().align(Align.left);
-        glProfileTable.add(glVertexCountLabel).row().align(Align.left);
+        glProfileTable.add(glCallLabel).align(Align.left).row();
+        glProfileTable.add(glDrawCallLabel).align(Align.left).row();
+        glProfileTable.add(glShaderSwitchLabel).align(Align.left).row();
+        glProfileTable.add(glTextureBindLabel).align(Align.left).row();
+        glProfileTable.add(glVertexCountLabel).align(Align.left).row();
         glProfileTable.pack();
 
-        add(glProfileTable).row().align(Align.center).padBottom(10f);
-        add(enableGLButton).row().align(Align.center).padBottom(10f);
-        add(enableCollisionDebugButton).row().align(Align.center).padBottom(10f);
-        add(enableNavmeshButton).row().align(Align.center).padBottom(10f);
-        add(regenerateButton).row().align(Align.center).padBottom(10f);
-        add(debugCamButton).row().align(Align.center).padBottom(10f);
-        add(pauseButton).row().align(Align.center).padBottom(10f);
+        add(glProfileTable).align(Align.center).padBottom(10f).row();
+        add(enableGLButton).align(Align.center).padBottom(10f).row();
+        add(enableCollisionDebugButton).align(Align.center).padBottom(10f).row();
+        add(enableNavmeshButton).align(Align.center).padBottom(10f).row();
+        add(regenerateButton).align(Align.center).padBottom(10f).row();
+        add(debugCamButton).align(Align.center).padBottom(10f).row();
+        add(pauseButton).align(Align.center).padBottom(10f).row();
         pack();
         setPosition(HUD.WIDTH - getWidth(), HUD.HEIGHT - getHeight());
     }

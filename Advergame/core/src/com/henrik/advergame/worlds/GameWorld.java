@@ -303,8 +303,8 @@ public class GameWorld extends World {
         renderer.clear();
 
         // Render timed messages
-        for(TimedMessage msg : timedMessages) {
-            msg.render(this);
+        for(int i = 0; i < timedMessages.size(); i++) {
+            timedMessages.get(i).render(this);
         }
 
         // Render attached timed messages

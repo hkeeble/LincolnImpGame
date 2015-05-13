@@ -764,22 +764,22 @@ public class Level {
         // Update navigation data
         navMesh.update(world.getMainCamera(), renderer, playerLocation);
 
-        for (ModelEntity wall : modelInstances) {
-            wall.update(world);
+        for (int i = 0; i < modelInstances.size(); i++) {
+            modelInstances.get(i).update(world);
         }
 
-        for(PhysicalEntity entity : staticEntities) {
-            entity.update(world);
+        for(int i = 0; i < staticEntities.size(); i++) {
+            staticEntities.get(i).update(world);
         }
 
-        for(PhysicalEntity entity : dynamicEntities) {
-            entity.update(world);
+        for(int i = 0; i < dynamicEntities.size(); i++) {
+            dynamicEntities.get(i).update(world);
         }
 
-        for(MessageSequence message : messageSequences) {
-            message.update(input, world);
+        for(int i = 0; i < messageSequences.size(); i++) {
+        	messageSequences.get(i).update(input, world);
         }
-
+    
         checkForRemovals(world);
 
         exitEntity.update(world);
@@ -815,17 +815,13 @@ public class Level {
     public void render(GameWorld world) {
 
         if(!world.isCollisionDebugActive() && !navMesh.isDebug()) {
-            for (ModelEntity wall : modelInstances) {
-                wall.render(world);
+            for (int i = 0; i < modelInstances.size(); i++) {
+                modelInstances.get(i).render(world);
             }
         }
 
-        for(PhysicalEntity entity : staticEntities) {
-            entity.render(world);
-        }
-
-        for(MessageSequence message : messageSequences) {
-            message.render(world);
+        for(int i = 0; i < messageSequences.size(); i++) {
+            messageSequences.get(i).render(world);
         }
 
         for(int i = 0; i < staticEntities.size(); i++) {

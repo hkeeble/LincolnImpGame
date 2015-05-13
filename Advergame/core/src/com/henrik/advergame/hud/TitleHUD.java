@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.henrik.advergame.Game;
 import com.henrik.gdxFramework.core.HUD;
@@ -41,8 +41,8 @@ public class TitleHUD extends Table {
         align(Align.center);
         add(continueButton).width((float)HUD.WIDTH/2.5f).height(HUD.HEIGHT/9).padBottom(30).padTop(150);
         row();
-        add(levelSelectButton).width((float)HUD.WIDTH/2.5f).height(HUD.HEIGHT/9).padBottom(30).row().align(Align.center);
+        add(levelSelectButton).width((float)HUD.WIDTH/2.5f).height(HUD.HEIGHT/9).padBottom(30).align(Align.center).row();
         row();
-        add(creditsButton).width((float)HUD.WIDTH/2.5f).height(HUD.HEIGHT/9).row().align(Align.center);
+        add(creditsButton).width((float)HUD.WIDTH/2.5f).height(HUD.HEIGHT/9).align(Align.center).row();
     }
 }

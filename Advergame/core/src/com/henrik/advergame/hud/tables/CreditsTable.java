@@ -3,9 +3,9 @@ package com.henrik.advergame.hud.tables;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.henrik.gdxFramework.core.HUD;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.utils.Align;
 
 /**
  * Created by Henri on 09/04/2015.
