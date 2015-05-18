@@ -36,9 +36,9 @@ public class PlayerController extends ControllerComponent {
 
     private Vector3 velocity;
 
-    private final float MAX_MOVE_SPEED = 0.1f;
-    private final float MIN_MOVE_SPEED = 0.05f;
-    private final float SPEED_INCREMENT = 0.05f;
+    private final float MAX_MOVE_SPEED = 6f;
+    private final float MIN_MOVE_SPEED = 1f;
+    private final float SPEED_INCREMENT = 2f;
     private final long MILLIS_BETWEEN_SPEED_UP = 200;
     private float currentMoveSpeed;
     private long millisAtLastSpeedUp;

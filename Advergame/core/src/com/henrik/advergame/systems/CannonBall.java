@@ -19,7 +19,7 @@ public class CannonBall extends PhysicalEntity {
     private DecalGraphicsComponent graphicsComponent;
 
     private boolean markedForRemoval;
-    private final float MOVE_SPEED = 0.2f;
+    private final float MOVE_SPEED = 12f;
     private Vector3 velocityPerFrame;
 
     public CannonBall(Texture texture, Vector3 position, Vector3 direction) {

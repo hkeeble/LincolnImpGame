@@ -28,7 +28,7 @@ import java.util.HashMap;
  */
 public class GameBase {
 
-    public static final boolean DEBUG_ACTIVE = false;
+    public static final boolean DEBUG_ACTIVE = true;
 
     protected GameStateCollection states;
     protected InputHandler input;

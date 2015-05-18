@@ -56,7 +56,7 @@ public class AngelController extends StateControllerComponent {
     private Vector3 locationAtStartOfMove;
     private Vector3 currentTarget;
     private float distanceToTarget;
-    private final float MOVE_SPEED = 0.1f;
+    private final float MOVE_SPEED = 6f;
 
     // Used to control waypoint index
     private int currentWaypointIndex;

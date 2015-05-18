@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class AngelDogController extends StateControllerComponent {
 
-    private final float moveSpeed = 0.1f;
+    private final float moveSpeed = 7f;
     private float distanceToTarget;
     private Vector3 currentDirection;
     private Vector3 startPosition;

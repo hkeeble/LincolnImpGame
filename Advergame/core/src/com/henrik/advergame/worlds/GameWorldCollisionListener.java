@@ -231,8 +231,13 @@ public class GameWorldCollisionListener extends ContactListener {
      * @param player The player object.
      * @param world The game world.
      */
+    private Vector3 temp = new Vector3();
+    private Vector3 temp2 = new Vector3();
     private boolean isPlayerInSight(GameObject object, GameObject player, GameWorld world) {
-        CollisionObject obj = world.rayTestFirst(object.getPosition(), player.getPosition(), CollisionWorld.CollisionFilter.ALL.getValue(),
+        player.getPosition(temp);
+        object.getPosition(temp2);
+    	
+    	CollisionObject obj = world.rayTestFirst(temp2, temp, CollisionWorld.CollisionFilter.ALL.getValue(),
                 (short)(CollisionWorld.CollisionFilter.DYNAMIC.getValue() | CollisionWorld.CollisionFilter.STATIC.getValue()));
 
         if(obj != null) {

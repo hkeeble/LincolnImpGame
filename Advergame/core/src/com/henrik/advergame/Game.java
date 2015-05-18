@@ -164,6 +164,14 @@ public class Game extends GameBase implements ApplicationListener {
             saveGame();
         }
 
+        // Unlocks all levels
+        /*
+        for(int i = 1; i < Game.LEVEL_COUNT+1; i++) {
+        	saveGame.saveLevelData(i, new LevelSaveData(i, 0, 0, 0));
+        	saveGame();
+        }
+    	saveGame.setLevel(Game.LEVEL_COUNT);
+    	*/
     }
 
     /**

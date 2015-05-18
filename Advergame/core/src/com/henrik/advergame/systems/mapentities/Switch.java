@@ -21,15 +21,17 @@ public class Switch extends LevelEntity {
 
     private boolean activated;
     private ArrayList<Door> doors;
-    private DecalGraphicsComponent graphicsComponent;
+    
+    private DecalGraphicsComponent offGraphicsComponent;
+    private DecalGraphicsComponent onGraphicsComponent;
 
     private Texture onTexture;
 
     public Switch(Vector3 position, ArrayList<Door> doors, AssetManager assetManager) {
         super(new PhysicsComponent(new btBoxShape(new Vector3(0.6f, 1.5f, 0.4f)), CollisionTags.SWITCH));
-        graphicsComponent = new DecalGraphicsComponent(2f, 2f, new TextureRegion(assetManager.get("sprites/switch_off.png", Texture.class)));
-
-        onTexture = assetManager.get("sprites/switch_on.png", Texture.class);
+        
+        offGraphicsComponent = new DecalGraphicsComponent(2f, 2f, new TextureRegion(assetManager.get("sprites/switch_off.png", Texture.class)));
+        onGraphicsComponent = new DecalGraphicsComponent(2f, 2f, new TextureRegion(assetManager.get("sprites/switch_on.png", Texture.class)));
 
         setPosition(position);
 
@@ -40,7 +42,6 @@ public class Switch extends LevelEntity {
 
     public void activate() {
         activated = true;
-        graphicsComponent.setTexture(onTexture);
     }
 
     public boolean isActivated() {
@@ -59,7 +60,11 @@ public class Switch extends LevelEntity {
     @Override
     public void render(World world) {
         super.render(world);
-        graphicsComponent.render(world.getCamera(), world.getRenderer(), this);
+        if(!activated) {
+        	offGraphicsComponent.render(world.getCamera(), world.getRenderer(), this);
+        } else {
+        	onGraphicsComponent.render(world.getCamera(), world.getRenderer(), this);
+        }
     }
 
     @Override
@@ -67,7 +72,7 @@ public class Switch extends LevelEntity {
         for(Door door : doors) {
             door.dispose();
         }
-
+        
         super.dispose();
     }
 }

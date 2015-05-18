@@ -31,10 +31,16 @@ public abstract class GameObject {
     public Vector3 getPosition() {
         return transform.getTranslation(temp);
     }
+    
+    public void getPosition(Vector3 out) {
+    	transform.getTranslation(out);
+    }
+    
     public void setPosition(float x, float y, float z) {
         transform.setTranslation(x,y,z);
     }
-    public void setPosition(Vector3 position) { transform.setTranslation(position); }
+    
+    public void setPosition(Vector3 position) { transform.setTranslation(position.x, position.y, position.z); }
 
     public void translate(Vector3 translation) {
         transform.translate(translation);
@@ -69,9 +75,9 @@ public abstract class GameObject {
     public void setVelocity(float x, float y, float z) { this.velocity.set(x,y,z); }
 
     public void update(World world) {
-        transform.trn(this.velocity.x,
-                        this.velocity.y,
-                        this.velocity.z);
+        transform.trn(this.velocity.x * Gdx.graphics.getDeltaTime(),
+                        this.velocity.y * Gdx.graphics.getDeltaTime(),
+                        this.velocity.z * Gdx.graphics.getDeltaTime());
     }
 
     public void render(World world) { }
