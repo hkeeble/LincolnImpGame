@@ -5,7 +5,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
@@ -24,7 +23,6 @@ import com.badlogic.gdx.utils.Pool;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.ModelFactory;
 import com.henrik.advergame.entities.LevelEntity;
-import com.henrik.advergame.entities.PhysicalEntity;
 import com.henrik.advergame.level.shared.*;
 import com.henrik.advergame.level.shared.entities.*;
 import com.henrik.advergame.systems.MessageSequence;
@@ -35,7 +33,6 @@ import com.henrik.advergame.systems.DestructableObject;
 import com.henrik.advergame.utils.CollisionTags;
 import com.henrik.advergame.utils.Point;
 import com.henrik.advergame.entities.DecalEntity;
-import com.henrik.advergame.entities.ModelEntity;
 import com.henrik.advergame.pathfinding.NavigationMesh;
 import com.henrik.gdxFramework.core.InputHandler;
 import com.henrik.gdxFramework.core.Renderer;
@@ -505,6 +502,7 @@ public class Level {
         return pushBlockModels.get(size);
     }
 
+    // TODO Optimize this!
     private void buildBoundaryWalls() {
         int bWallHeight = height+2;
         Vector3 verticalWallDims =  new Vector3(cellSize, cellSize, bWallHeight*cellSize);
@@ -538,6 +536,7 @@ public class Level {
         modelInstances.add(new ModelObject(new ModelGraphicsComponent(new ModelInstance(m))));
     }
 
+    // TODO Optimize this!
     private void createWallSegment(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
         // TOP
         mpb.setUVRange(0f, 0f, dimensions.z, dimensions.x);
@@ -585,6 +584,7 @@ public class Level {
         createDoorSides(mpb, center, dimensions);
     }
 
+    // TODO Optimize this!
     private void createDoorMain(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
         // FRONT
         mpb.rect(new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower left
@@ -601,6 +601,7 @@ public class Level {
                 new Vector3(0,0,-1));
     }
 
+    // TODO Optimize this!
     private void createDoorSides(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
         // TOP
         mpb.setUVRange(0, 0, 1, 1);
@@ -626,6 +627,7 @@ public class Level {
 
     }
 
+    // TODO Optimize this!
     private void buildWalls() {
         Gdx.app.log("Level", "Building " + String.valueOf(chunkWidth) + "x" + String.valueOf(chunkHeight) + " chunk level.");
 
@@ -653,6 +655,7 @@ public class Level {
         }
     }
 
+    // TODO Optimize this!
     private void buildChunk(Chunk chunk) {
 
         ArrayList<Segment> segments = chunk.getSegments();
@@ -740,6 +743,7 @@ public class Level {
         return localPos + (chunkPos*CHUNK_SIZE);
     }
 
+    // TODO Optimize this!
     private Vector2 directionToPosition(Vector2 start, Vector2 dest) {
         Vector2 moveDir = new Vector2();
         int manDist = manhattanDistance(start, dest);
@@ -841,39 +845,11 @@ public class Level {
     }
 
     /**
-     * Retrieve a list of the horizontal and vertical neighbours of the given point.
-     * @param point The point to find the neighbours of.
-     */
-    private ArrayList<Vector2> getNeighbours(Vector2 point) {
-        ArrayList<Vector2> neighbours = new ArrayList<Vector2>();
-
-        Vector2 right = new Vector2(point.x+1, point.y);
-        Vector2 left = new Vector2(point.x-1, point.y);
-        Vector2 down = new Vector2(point.x, point.y+1);
-        Vector2 up = new Vector2(point.x+1, point.y-1);
-
-        if(isValidLocation(right))
-            neighbours.add(right);
-        if(isValidLocation(left))
-            neighbours.add(left);
-        if(isValidLocation(up))
-            neighbours.add(up);
-        if(isValidLocation(down))
-            neighbours.add(down);
-
-        return neighbours;
-    }
-
-    /**
      * Checks if the given location is valid in this grid (that is, it is within grid bounds)
      * @param location The location to check for validity.
      */
     private boolean isValidLocation(Point location) {
         return location.x > 0 && location.y > 0 && location.x < width && location.y < height;
-    }
-
-    private boolean isValidLocation(Vector2 location) {
-        return isValidLocation(new Point((int)location.x, (int)location.y));
     }
 
     public void dispose() {
@@ -976,16 +952,6 @@ public class Level {
     public int getHeight() {
         return map.getHeight();
     }
-
-    /**
-     * Get the width, in number of chunks, of the level.
-     */
-    public int getChunkWidth() { return chunkWidth; }
-
-    /**
-     * Get the height, in number of chunks, of the level.
-     */
-    public int getChunkHeight() { return chunkHeight; }
 
     /**
      * Get the size of an individual cell in the level.

@@ -13,51 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cd60953-3420-4091-8fb4-afbd7edebb80" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\Advergame.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\android.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\assets\effects\teleport.pfx" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\assets\saveGame.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\build\generated\source\buildConfig\release\com\henrik\advergame\android\BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\build\generated\source\r\release\com\henrik\advergame\android\R.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\core\core.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\desktop\desktop.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\ios\ios.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/AngelController.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/AngelController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/AngelDog.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/AngelDog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/AngelDogController.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/AngelDogController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/AttachedTimedMessage.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/AttachedTimedMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/generated/source/buildConfig/debug/com/henrik/advergame/android/BuildConfig.java" afterPath="$PROJECT_DIR$/android/build/generated/source/buildConfig/debug/com/henrik/advergame/android/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/cameras/CinematicCamera.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/cameras/CinematicCamera.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/DecalGraphicsComponent.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/DecalGraphicsComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/Direction.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/Direction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameStateCollection.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameStateCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorld.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorld.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/HUDManager.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/HUDManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/InGameDataTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/InGameDataTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Map.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/MessageComponent.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/MessageComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/MessageSequence.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/MessageSequence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/RandomUtils.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/RandomUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/Renderer.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/Renderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/SpriteDecalGraphicsComponent.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/SpriteDecalGraphicsComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/Teleporter.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/Teleporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TimedMessage.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TimedMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TriggeredMessageSequence.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TriggeredMessageSequence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/VectorMath.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/VectorMath.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/gradle.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="Advergame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -146,10 +102,12 @@
       <file leaf-file-name="Level.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3923611" vertical-offset="10994" max-vertical-offset="17136">
-              <caret line="676" column="66" selection-start-line="676" selection-start-column="66" selection-end-line="676" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="8113" max-vertical-offset="16592">
+              <caret line="504" column="7" selection-start-line="504" selection-start-column="7" selection-end-line="504" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#35198#35199#0" expanded="true" />
+                <element signature="e#35253#35254#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2155,7 +2113,6 @@
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/VectorMath.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TriggeredMessageSequence.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/AttachedTimedMessage.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/Teleporter.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/Renderer.java" />
@@ -2178,6 +2135,7 @@
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TimedMessage.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/MessageSequence.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/components/MessageComponent.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java" />
       </list>
     </option>
   </component>
@@ -2810,9 +2768,29 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -2827,14 +2805,14 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25612473" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3572204" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32899022" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23134328" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22604166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23273942" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3255,10 +3233,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3923611" vertical-offset="10994" max-vertical-offset="17136">
-          <caret line="676" column="66" selection-start-line="676" selection-start-column="66" selection-end-line="676" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="8113" max-vertical-offset="16592">
+          <caret line="504" column="7" selection-start-line="504" selection-start-column="7" selection-end-line="504" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#35198#35199#0" expanded="true" />
+            <element signature="e#35253#35254#0" expanded="true" />
           </folding>
         </state>
       </provider>
