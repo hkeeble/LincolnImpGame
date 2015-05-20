@@ -12,6 +12,7 @@ import com.henrik.advergame.Game;
 import com.henrik.advergame.SessionManager;
 import com.henrik.advergame.hud.tables.InGameDataTable;
 import com.henrik.advergame.hud.tables.PauseTable;
+import com.henrik.advergame.states.TitleScreen;
 import com.henrik.advergame.worlds.GameWorld;
 import com.henrik.gdxFramework.core.GameBase;
 import com.henrik.gdxFramework.core.HUD;
@@ -64,7 +65,7 @@ public class HUDManager {
     private class ExitListener extends ClickListener {
         @Override
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-            game.enableState(Game.State.TITLE_SCREEN);
+            game.enableState(TitleScreen.class);
             return true;
         }
     }
@@ -94,8 +95,7 @@ public class HUDManager {
     /**
      * Creates a new HUD  manager.
      * @param game The game the manager belongs to.
-     * @param world The world the manager belongs to.
-     * @param uiSkin The UI skin used by the HUD elements.
+     * @param world The world the manager belongs to
      */
     public HUDManager(GameBase game, GameWorld world, Sound selectSound) {
         this.hud = game.hud;

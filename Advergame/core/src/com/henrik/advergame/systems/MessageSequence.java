@@ -4,16 +4,18 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Pool;
 import com.henrik.advergame.worlds.GameWorld;
 import com.henrik.advergame.components.MessageComponent;
 import com.henrik.gdxFramework.core.InputHandler;
+import com.henrik.gdxFramework.core.Renderer;
 import com.henrik.gdxFramework.core.World;
 import com.henrik.gdxFramework.entities.GameObject;
 
 /**
  * Created by Henri on 09/02/2015.
  */
-public class MessageSequence extends GameObject {
+public class MessageSequence extends GameObject implements Pool.Poolable {
 
     private MessageComponent[] pages;
     protected boolean active;
@@ -21,32 +23,19 @@ public class MessageSequence extends GameObject {
     private int currentPage;
     private boolean touchLastFrame; // Whether or not there was a touch last frame.
 
-    private boolean hasAdvanceSound;
-    private Sound advanceSound;
-
-    public MessageSequence(String[] pagesText, BitmapFont font, Color textColor, TextureRegion background, Sound advanceSound) {
-        this(pagesText, font, textColor, background);
-
-        this.advanceSound = advanceSound;
-        hasAdvanceSound = true;
-    }
-
-
-    public MessageSequence(String[] pagesText, BitmapFont font, Color textColor, TextureRegion background) {
+    public MessageSequence(String[] pagesText, BitmapFont font, Color textColor, TextureRegion background, Renderer renderer) {
         super();
 
         pages = new MessageComponent[pagesText.length];
 
         for(int i = 0; i < pagesText.length; i++) {
-            pages[i] = new MessageComponent(pagesText[i], font, textColor, background);
+            pages[i] = new MessageComponent(pagesText[i], font, textColor, background, renderer);
         }
 
         currentPage = 0;
         finished = false;
         active = false;
         touchLastFrame = false;
-
-        hasAdvanceSound = false;
     }
 
 
@@ -59,8 +48,6 @@ public class MessageSequence extends GameObject {
         if(active == false && finished == false) {
             active = true;
             finished = false;
-            if(hasAdvanceSound)
-                advanceSound.play();
         }
     }
 
@@ -72,8 +59,6 @@ public class MessageSequence extends GameObject {
 
     public void advance() {
         currentPage++;
-        if(hasAdvanceSound)
-            advanceSound.play();
         if(currentPage > pages.length-1) {
             stop();
         }
@@ -86,8 +71,6 @@ public class MessageSequence extends GameObject {
         }
     }
 
-    
-    
     public void render(GameWorld world) {
         super.render(world);
         if(active) {
@@ -106,4 +89,9 @@ public class MessageSequence extends GameObject {
             touchLastFrame = input.isTouched();
         }
     }
+
+    public void reset() {
+
+    }
+
 }

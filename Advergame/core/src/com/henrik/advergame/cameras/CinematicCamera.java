@@ -27,18 +27,22 @@ public class CinematicCamera extends CameraController {
     private BoundingBox targetBox;
     private float moveSpeed;
 
+    private Vector3 velocity;
+
     // Zoom Variables
     private float currentFOV;
     private float minFOV;
 
     public CinematicCamera() {
         currentTarget = new Vector3();
+        velocity = new Vector3();
         currentState = State.NONE;
     }
 
     public void update() {
         if(currentState.equals(State.TARGET)) {
-            Vector3 velocity = VectorMath.directionTo(camera.position, currentTarget).scl(moveSpeed);
+            VectorMath.directionTo(camera.position, currentTarget, velocity);
+            velocity.scl(moveSpeed);
             this.camera.translate(velocity);
 
             Vector3 currentPosition = camera.position;

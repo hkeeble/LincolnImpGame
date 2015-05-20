@@ -14,9 +14,6 @@ import com.badlogic.gdx.graphics.g3d.decals.CameraGroupStrategy;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.graphics.g3d.decals.GroupStrategy;
-import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
-import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
-import com.badlogic.gdx.graphics.g3d.particles.batches.PointSpriteParticleBatch;
 import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
@@ -38,9 +35,6 @@ public class Renderer {
     private ModelBatch modelBatch;
     private DecalBatch decalBatch;
     private SpriteBatch spriteBatch;
-    private PointSpriteParticleBatch particleBatch;
-
-    private ParticleSystem particleSystem;
 
     private ArrayList<ModelInstance> models;
     private ArrayList<SpriteRender> spriteRenders;
@@ -51,12 +45,6 @@ public class Renderer {
         modelBatch = new ModelBatch();
         decalBatch = new DecalBatch(new CameraGroupStrategy(camera));
         spriteBatch = new SpriteBatch();
-
-        // Set up particle renderer
-        particleSystem = ParticleSystem.get();
-        particleBatch = new PointSpriteParticleBatch();
-        particleBatch.setCamera(camera);
-        ParticleSystem.get().add(particleBatch);
 
         models = new ArrayList<ModelInstance>();
         spriteRenders = new ArrayList<SpriteRender>();
@@ -69,25 +57,20 @@ public class Renderer {
 
     public void render(Environment environment) {
         modelBatch.begin(activeCamera);
-        for(ModelInstance model : models) {
+
+        for(int i = 0; i < models.size(); i++) {
             if(environment != null)
-                modelBatch.render(model, environment);
+                modelBatch.render(models.get(i), environment);
             else
-                modelBatch.render(model);
+                modelBatch.render(models.get(i));
         }
         modelBatch.end();
 
         spriteBatch.begin();
-        for(SpriteRender sprite : spriteRenders) {
-            spriteBatch.draw(sprite.getTexture(), sprite.getPosition().x, sprite.getPosition().y);
+        for(int i = 0; i < spriteRenders.size(); i++) {
+            spriteBatch.draw(spriteRenders.get(i).getTexture(), spriteRenders.get(i).getPosition().x, spriteRenders.get(i).getPosition().y);
         }
         spriteBatch.end();
-
-        particleSystem.update();
-        particleSystem.begin();
-        particleSystem.draw();
-        particleSystem.end();;
-        modelBatch.render(particleSystem);
 
         decalBatch.flush();
     }
@@ -176,8 +159,6 @@ public class Renderer {
     }
 
     public void addSprite(Texture texture, float x, float y) { spriteRenders.add(new SpriteRender(texture, new Vector2(x,y))); }
-
-    public void addParticleEffect(ParticleEffect effect) { particleSystem.add(effect); }
 
     public SpriteBatch getSpriteBatch() { return spriteBatch; }
 

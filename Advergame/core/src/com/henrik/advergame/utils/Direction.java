@@ -15,8 +15,14 @@ public class Direction {
 
     private int current;
 
+    Vector3 direction;
+    Vector3 normDir;
+
     public Direction() {
         current = UP;
+
+        direction = new Vector3();
+        normDir = new Vector3();
     }
 
     public int getCurrent() { return current; }
@@ -27,8 +33,7 @@ public class Direction {
 
     public void update(Vector3 velocity) {
         if(isMoving(velocity)) {
-            Vector3 direction = new Vector3(velocity);
-            Vector3 normDir = new Vector3();
+            direction.set(velocity);
             normDir.set(direction);
             normDir.nor();
 

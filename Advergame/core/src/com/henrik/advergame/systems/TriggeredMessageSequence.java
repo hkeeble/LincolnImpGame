@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.bullet.collision.btBoxShape;
 import com.henrik.advergame.utils.CollisionTags;
 import com.henrik.advergame.worlds.GameWorld;
 import com.henrik.gdxFramework.core.InputHandler;
+import com.henrik.gdxFramework.core.Renderer;
 import com.henrik.gdxFramework.core.World;
 import com.henrik.gdxFramework.entities.components.PhysicsComponent;
 
@@ -19,8 +20,8 @@ public class TriggeredMessageSequence extends MessageSequence {
     private PhysicsComponent physicsComponent;
     private Vector3 focusLocation;
 
-    public TriggeredMessageSequence(Vector3 location, int cellSize, String[] pagesText, BitmapFont font, Color textColor, TextureRegion background, Vector3 focusLocation) {
-        super(pagesText, font, textColor, background);
+    public TriggeredMessageSequence(Vector3 location, int cellSize, String[] pagesText, BitmapFont font, Color textColor, TextureRegion background, Vector3 focusLocation, Renderer renderer) {
+        super(pagesText, font, textColor, background, renderer);
 
         physicsComponent = new PhysicsComponent(new btBoxShape(new Vector3((float)cellSize / 2f, (float)cellSize / 2f, (float)cellSize / 2f)), CollisionTags.MESSAGE_TRIGGER);
 

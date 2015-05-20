@@ -25,8 +25,10 @@ public class DecalGraphicsComponent {
 
     protected BoundingBox boundingBox;
     protected BoundingBox trnBoundingBox;
+    protected Vector3 min, max;
 
     protected Vector3 renderOffset;
+    protected Vector3 position;
 
     protected float xRotation;
 
@@ -42,11 +44,18 @@ public class DecalGraphicsComponent {
         billboard = false;
         
         textureRegion = new TextureRegion();
+
+        trnBoundingBox = new BoundingBox();
+        min = new Vector3();
+        max = new Vector3();
+        position = new Vector3();
     }
 
     public DecalGraphicsComponent(float width, float height, TextureRegion textureRegion) {
         this();
         decal = Decal.newDecal(width, height, textureRegion, true);
+
+        boundingBox = new BoundingBox();
 
         boundingBox = calculateBoundingBox();
 
@@ -67,8 +76,10 @@ public class DecalGraphicsComponent {
         Vector3 position = decal.getPosition();
         Vector2 dimensions = new Vector2(decal.getWidth(), decal.getHeight());
 
-        Vector3 max = new Vector3(position.x-(dimensions.x/2), position.y-(dimensions.y/2), position.z-1);
-        Vector3 min = new Vector3(position.x+(dimensions.x/2), position.y+(dimensions.y/2), position.z+1);
+        max.set(position.x-(dimensions.x/2), position.y-(dimensions.y/2), position.z-1);
+        min.set(position.x+(dimensions.x/2), position.y+(dimensions.y/2), position.z+1);
+
+        boundingBox.set(min, max);
 
         return new BoundingBox(min, max);
     }
@@ -77,12 +88,12 @@ public class DecalGraphicsComponent {
 
     public void render(Camera camera, Renderer renderer, GameObject object) {
 
-        if(boundingBox == null)
+        if(boundingBox == null) {
+            boundingBox = new BoundingBox();
             boundingBox = calculateBoundingBox();
+        }
 
         // Calculate the current bound box from original and the object position
-        trnBoundingBox = new BoundingBox();
-        Vector3 min = new Vector3(), max = new Vector3();
         boundingBox.getMin(min);
         boundingBox.getMax(max);
         trnBoundingBox.set(min.add(object.getPosition()), max.add(object.getPosition()));
@@ -96,7 +107,7 @@ public class DecalGraphicsComponent {
                 decal.setRotationX(xRotation);
             }
 
-            Vector3 position = new Vector3(object.getPosition());
+            object.getPosition(position);
             position.add(renderOffset);
             decal.setPosition(position);
 

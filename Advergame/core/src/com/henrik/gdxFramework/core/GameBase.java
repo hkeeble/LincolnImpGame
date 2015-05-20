@@ -28,7 +28,7 @@ import java.util.HashMap;
  */
 public class GameBase {
 
-    public static final boolean DEBUG_ACTIVE = true;
+    public static final boolean DEBUG_ACTIVE = false;
 
     protected GameStateCollection states;
     protected InputHandler input;
@@ -142,9 +142,9 @@ public class GameBase {
 
     public void addInputProcessor(InputProcessor processor) { inputProcessor.addProcessor(processor); }
 
-    public void enableState(Game.State state) {
+    public void enableState(Class<?> type) {
         hud.clear(); // Clear the HUD for this state
-        states.enable(state); // Enable the new state, disabling all other states
+        states.enable(type); // Enable the new state, disabling all other states
     }
 
     public ShapeRenderer getDebugRenderer() {
@@ -173,8 +173,8 @@ public class GameBase {
         return fonts.get(name + String.valueOf(size));
     }
 
-    public <T> T getState(Game.State state, Class<T> type) {
-        return (T)states.get(state);
+    public <T> T getState(Class<T> type) {
+        return (T)states.get(type);
     }
 
 }

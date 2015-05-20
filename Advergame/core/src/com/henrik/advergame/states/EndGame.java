@@ -56,7 +56,7 @@ public class EndGame extends GameState {
             music.stop();
 
             if(msgTable.isDone()) {
-                game.enableState(Game.State.TITLE_SCREEN);
+                game.enableState(TitleScreen.class);
             }
 
             return super.touchDown(event, x, y, pointer, button);

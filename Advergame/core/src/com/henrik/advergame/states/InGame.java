@@ -8,9 +8,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
-import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
-import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -153,13 +150,6 @@ public class InGame extends GameState {
 
         // Initialize the game world
         world = new GameWorld(game, assetManager);
-
-        // Load particle effect seperately because we need the renderer
-        ParticleEffectLoader.ParticleEffectLoadParameter loadParam = new ParticleEffectLoader.ParticleEffectLoadParameter(ParticleSystem.get().getBatches());
-        ParticleEffectLoader loader = new ParticleEffectLoader(new InternalFileHandleResolver());
-        assetManager.setLoader(ParticleEffect.class, loader);
-        assetManager.load("effects/teleport.pfx", ParticleEffect.class, loadParam);
-        assetManager.finishLoading();
 
         if(entryState == EntryState.CONTINUE) {
             world.loadLevel(((Game) game).getPlayerLevel());

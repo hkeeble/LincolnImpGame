@@ -21,6 +21,8 @@ public class InGameDataTable extends Table {
     private int currentKeyCount;
     private Label keys;
 
+    private StringBuilder stringBuilder;
+
     public InGameDataTable(BitmapFont font) {
         super();
 
@@ -35,6 +37,8 @@ public class InGameDataTable extends Table {
 
         pack();
         setBackground(Game.getUISkin().getDrawable("uiBackground"));
+
+        stringBuilder = new StringBuilder();
     }
 
     public void update(SessionManager sessionManager) {
@@ -43,18 +47,29 @@ public class InGameDataTable extends Table {
         targetScore = sessionManager.getScore();
         if(currentScore < targetScore) {
             currentScore += scoreIncrement;
+            updateScore();
         }
         if(currentScore > targetScore) { // If we are above the current score, go down to it
             currentScore = targetScore;
+            updateScore();
         }
-
-        score.setText("Score: " + String.valueOf(currentScore));
 
         // Update keys
         if(currentKeyCount != sessionManager.getKeyCount()) {
             currentKeyCount = sessionManager.getKeyCount();
+            updateKeys();
         }
+    }
 
-        keys.setText("Keys: " + String.valueOf(currentKeyCount));
+    private void updateScore() {
+        stringBuilder.setLength(0);
+        stringBuilder.append("Score ").append(String.valueOf(currentScore));
+        score.setText(stringBuilder.toString());
+    }
+
+    private void updateKeys() {
+        stringBuilder.setLength(0);
+        stringBuilder.append("Keys ").append(String.valueOf(currentKeyCount));
+        keys.setText(stringBuilder.toString());
     }
 }

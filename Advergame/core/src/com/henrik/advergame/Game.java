@@ -18,22 +18,10 @@ import java.util.*;
 
 public class Game extends GameBase implements ApplicationListener {
 
-    public enum State {
-        IN_GAME(1), GAME_OVER(2), TITLE_SCREEN(3), LEVEL_SELECT(4), LEVEL_INTERLUDE(5), INTRO(6), CREDITS(7), END_GAME(8);
-
-        private final int id;
-        State(int id) {
-            this.id = id;
-        }
-
-        public int getID() {
-            return id;
-        }
-    }
-
     private GameState inGame, gameOver, intro, levelSelect, levelInterlude, titleScreen, credits, endGame;
 
     public final int FONT_COUNT = 10;
+    public final int[] FONT_SIZES = new int[] { 3, 2, 7, 6, 5, 4, 1};
     public final int FONT_SIZE_INCREMENT = 12;
 
     public static final int LEVEL_COUNT = 14;
@@ -68,16 +56,16 @@ public class Game extends GameBase implements ApplicationListener {
         credits = new Credits(this);
         endGame = new EndGame(this);
 
-        states.add(State.INTRO, intro);
-        states.add(State.TITLE_SCREEN, titleScreen);
-        states.add(State.IN_GAME, inGame);
-        states.add(State.GAME_OVER, gameOver);
-        states.add(State.LEVEL_SELECT, levelSelect);
-        states.add(State.LEVEL_INTERLUDE, levelInterlude);
-        states.add(State.CREDITS, credits);
-        states.add(State.END_GAME, endGame);
+        states.add(intro);
+        states.add(titleScreen);
+        states.add(inGame);
+        states.add(gameOver);
+        states.add(levelSelect);
+        states.add(levelInterlude);
+        states.add(credits);
+        states.add(endGame);
 
-        states.enable(State.TITLE_SCREEN);
+        states.enable(TitleScreen.class);
 
         // Enable culling
         Gdx.gl.glEnable(GL30.GL_CULL_FACE);
@@ -90,7 +78,7 @@ public class Game extends GameBase implements ApplicationListener {
     public void loadFonts() {
         // Sizes
         fontParamList = new ArrayList<FreeTypeFontGenerator.FreeTypeFontParameter>();
-        for(int i = 0; i < FONT_COUNT; i++) {
+        for(int i = 0; i < FONT_SIZES.length; i++) {
             FreeTypeFontGenerator.FreeTypeFontParameter params = new FreeTypeFontGenerator.FreeTypeFontParameter();
             params.size = 12 + (i* FONT_SIZE_INCREMENT);
             fontParamList.add(params);
@@ -103,7 +91,7 @@ public class Game extends GameBase implements ApplicationListener {
 
     private void addFont(String filePath, String internalName) {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(filePath));
-        for(int i = 0; i < FONT_COUNT; i++) {
+        for(int i = 0; i < FONT_SIZES.length; i++) {
             fonts.put(internalName + String.valueOf(i+1), generator.generateFont(fontParamList.get(i)));
         }
     }

@@ -32,8 +32,8 @@ public class Intro extends GameState {
 
             if(introTable.isDone()) {
                 music.stop();
-                game.getState(Game.State.IN_GAME, InGame.class).setContinueState();
-                game.enableState(Game.State.IN_GAME);
+                game.getState(InGame.class).setContinueState();
+                game.enableState(InGame.class);
             }
 
             return super.touchDown(event, x, y, pointer, button);

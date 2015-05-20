@@ -18,6 +18,8 @@ import com.henrik.advergame.hud.HUDManager;
 import com.henrik.advergame.level.Level;
 import com.henrik.advergame.entities.*;
 import com.henrik.advergame.pathfinding.KDTree;
+import com.henrik.advergame.states.GameOver;
+import com.henrik.advergame.states.LevelInterlude;
 import com.henrik.advergame.systems.*;
 import com.henrik.advergame.systems.MessageSequence;
 import com.henrik.advergame.utils.RandomUtils;
@@ -55,9 +57,6 @@ public class GameWorld extends World {
 
     // Timed messages
     private ArrayList<TimedMessage> timedMessages;
-
-    // Timed messages attached to entities
-    private HashMap<TimedMessage,GameObject> attachedMessages;
 
     // The session manager manages all details about the current game. It is able to inform the world of changes in game data.
     private SessionManager sessionManager;
@@ -113,7 +112,6 @@ public class GameWorld extends World {
 
         // Initialize timed messages
         timedMessages = new ArrayList<TimedMessage>();
-        attachedMessages = new HashMap<TimedMessage, GameObject>();
 
         // Initialize some collision world variables, and the collision listener.
         setCollisionWorldDebugDrawMode(btIDebugDraw.DebugDrawModes.DBG_MAX_DEBUG_DRAW_MODE);
@@ -126,7 +124,7 @@ public class GameWorld extends World {
         hudManager = new HUDManager(game, this, assetManager.get("sounds/select.wav", Sound.class));
         hudManager.enableMainHUD();
 
-        firstLevelMessageSequence = new MessageSequence(firstLevelMsgSequence, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"));
+        firstLevelMessageSequence = new MessageSequence(firstLevelMsgSequence, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), renderer);
     }
 
     /**
@@ -142,7 +140,7 @@ public class GameWorld extends World {
 
         reset();
 
-        currentLevel = new Level(String.valueOf(level), 2, assetManager, game.getFont("main", 3));
+        currentLevel = new Level(String.valueOf(level), 2, assetManager, game.getFont("main", 3), this);
 
         // Set player position
         player.setPosition(currentLevel.getPlayerStart().x * currentLevel.getCellSize(), 0, currentLevel.getPlayerStart().y * currentLevel.getCellSize());
@@ -158,7 +156,7 @@ public class GameWorld extends World {
 
         clearCollisionWorld();
 
-        currentLevel.Load(String.valueOf(currentLevelNumber));
+        currentLevel.Load(this, String.valueOf(currentLevelNumber));
 
         // Set player position
         player.setPosition(currentLevel.getPlayerStart().x * currentLevel.getCellSize(), 0, currentLevel.getPlayerStart().y * currentLevel.getCellSize());
@@ -190,10 +188,10 @@ public class GameWorld extends World {
         registerDynamicEntity(player.getPhysicsComponent(), player);
 
         // Add the level walls to the collision world
-        ArrayList<ModelEntity> walls = currentLevel.getModelEntities();
+/*        ArrayList<ModelObject> walls = currentLevel.getModelEntities();
         for (ModelEntity e : walls) {
             registerStaticGeometry(e.getPhysicsComponent(), e);
-        }
+        }*/
 
         // Add all static level entities to the collision world
         ArrayList<LevelEntity> staticEntities = currentLevel.getStaticEntities();
@@ -239,25 +237,9 @@ public class GameWorld extends World {
                 }
             }
 
-            // Update attached timed messages
-            Iterator iter = attachedMessages.entrySet().iterator();
-            while(iter.hasNext()) {
-                Map.Entry entry = (Map.Entry)iter.next();
-                GameObject source = (GameObject)entry.getValue();
-                TimedMessage msg = (TimedMessage)entry.getKey();
-
-                msg.setPosition(source.getPosition().add(0, 1f, 0));
-                msg.update(game.getInput(), this);
-
-                // Remove when finished (owner responsible for managing memory)
-                if(msg.isFinished()) {
-                    iter.remove();
-                }
-            }
-
             // Check for session manager changes (these happen here as new level is called, cannot be called mid-callback during collision)
             if (sessionManager.isGameOver()) {
-                game.enableState(Game.State.GAME_OVER);
+                game.enableState(GameOver.class);
                 return;
             }
 
@@ -278,7 +260,7 @@ public class GameWorld extends World {
                 gameConcrete.saveGame();
 
                 // Enter level interlude state
-                game.enableState(Game.State.LEVEL_INTERLUDE);
+                game.enableState(LevelInterlude.class);
                 return;
             }
 
@@ -305,14 +287,6 @@ public class GameWorld extends World {
         // Render timed messages
         for(int i = 0; i < timedMessages.size(); i++) {
             timedMessages.get(i).render(this);
-        }
-
-        // Render attached timed messages
-        Iterator iter = attachedMessages.entrySet().iterator();
-        while(iter.hasNext()) {
-            Map.Entry entry = (Map.Entry)iter.next();
-            TimedMessage msg = (TimedMessage)entry.getKey();
-            msg.render(this);
         }
 
         firstLevelMessageSequence.render(this);
@@ -404,7 +378,7 @@ public class GameWorld extends World {
      * Adds a message to the world.
      */
     public void addMessage(String text, long millisToShow, Vector3 position) {
-        timedMessages.add(new TimedMessage(text, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, position));
+        timedMessages.add(new TimedMessage(text, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, position, renderer));
         timedMessages.get(timedMessages.size() - 1).show();
     }
 
@@ -412,8 +386,8 @@ public class GameWorld extends World {
      * Adds a message to the world. The message will follow the given game object.
      */
     public void addMessage(String text, long millisToShow, GameObject source) {
-        TimedMessage message = new TimedMessage(text, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, source.getPosition());
-        attachedMessages.put(message, source);
+        TimedMessage message = new TimedMessage(text, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, source.getPosition(), renderer, source);
+        timedMessages.add(message);
         message.show();
     }
 
@@ -422,7 +396,7 @@ public class GameWorld extends World {
      */
     public void addMessage(TimedMessage message, GameObject source) {
     	message.setPosition(source.getPosition());
-    	attachedMessages.put(message, source);
+    	timedMessages.add(message);
     	message.show();
     }
     

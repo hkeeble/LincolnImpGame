@@ -25,6 +25,7 @@ public class AngelDogController extends StateControllerComponent {
     private int wayPointID;
     private ArrayList<Point> wayPoints;
 
+    private Vector3 velocity;
     private Direction direction;
 
     private int waypointDirection;
@@ -47,6 +48,8 @@ public class AngelDogController extends StateControllerComponent {
         updateTarget(initialPos);
 
         waypointDirection = 1;
+
+        velocity = new Vector3();
     }
 
     @Override
@@ -61,7 +64,8 @@ public class AngelDogController extends StateControllerComponent {
                 break;
 
             case ROAM:
-                object.setVelocity(new Vector3(currentDirection).scl(moveSpeed));
+                velocity.set(currentDirection.x * moveSpeed, currentDirection.y * moveSpeed, currentDirection.z * moveSpeed);
+                object.setVelocity(velocity);
 
                 // Change our target if we reach the current one
                 if(object.getPosition().dst(startPosition) >= distanceToTarget) {
@@ -119,7 +123,7 @@ public class AngelDogController extends StateControllerComponent {
     private void updateTarget(Vector3 initialPos) {
         startPosition.set(initialPos);
         currentTarget.set(wayPoints.get(wayPointID).x, 0, wayPoints.get(wayPointID).y);
-        currentDirection.set(VectorMath.directionTo(initialPos, currentTarget));
+        VectorMath.directionTo(initialPos, currentTarget, currentDirection);
         distanceToTarget = initialPos.dst(currentTarget);
     }
 

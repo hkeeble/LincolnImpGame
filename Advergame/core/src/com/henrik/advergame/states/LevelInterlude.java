@@ -32,10 +32,10 @@ public class LevelInterlude extends GameState {
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
-            InGame inGameState = game.getState(Game.State.IN_GAME, InGame.class);
+            InGame inGameState = game.getState(InGame.class);
 
             if(concreteGame.getSaveGame().getLastPlayedLevel() == Game.LEVEL_COUNT) {
-                game.enableState(Game.State.END_GAME);
+                game.enableState(EndGame.class);
                 return super.touchDown(event, x, y, pointer, button);
             }
 
@@ -44,7 +44,7 @@ public class LevelInterlude extends GameState {
             else
                 inGameState.setLevelState(concreteGame.getSaveGame().getLastPlayedLevel()+1);
 
-            game.enableState(Game.State.IN_GAME);
+            game.enableState(InGame.class);
 
             return super.touchDown(event, x, y, pointer, button);
         }
@@ -58,7 +58,7 @@ public class LevelInterlude extends GameState {
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
-            game.enableState(Game.State.TITLE_SCREEN);
+            game.enableState(TitleScreen.class);
             return super.touchDown(event, x, y, pointer, button);
         }
     }
@@ -70,9 +70,9 @@ public class LevelInterlude extends GameState {
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
-            InGame inGameState = game.getState(Game.State.IN_GAME, InGame.class);
+            InGame inGameState = game.getState(InGame.class);
             inGameState.setReplayState();
-            game.enableState(Game.State.IN_GAME);
+            game.enableState(InGame.class);
 
             return super.touchDown(event, x, y, pointer, button);
         }

@@ -24,6 +24,7 @@ public class SpriteDecalGraphicsComponent {
 
     protected BoundingBox boundingBox;
     protected BoundingBox trnBoundingBox;
+    protected Vector3 min, max;
 
     boolean inView; // Whether or not this entity is within view
 
@@ -31,6 +32,10 @@ public class SpriteDecalGraphicsComponent {
 
     public SpriteDecalGraphicsComponent(float width, float height, HashMap<AnimationType, Animation> animations) {
         this(width, height, animations, true);
+
+        trnBoundingBox = new BoundingBox();
+        min = new Vector3();
+        max = new Vector3();
     }
 
     public SpriteDecalGraphicsComponent(float width, float height, HashMap<AnimationType, Animation> animations, boolean billboard) {
@@ -46,6 +51,10 @@ public class SpriteDecalGraphicsComponent {
         xRotation = 0;
 
         inView = false;
+
+        trnBoundingBox = new BoundingBox();
+        min = new Vector3();
+        max = new Vector3();
 
         this.billboard = billboard;
     }
@@ -91,8 +100,6 @@ public class SpriteDecalGraphicsComponent {
         decal.update();
 
         // Calculate the current bound box from original and the object position
-        trnBoundingBox = new BoundingBox();
-        Vector3 min = new Vector3(), max = new Vector3();
         boundingBox.getMin(min);
         boundingBox.getMax(max);
         trnBoundingBox.set(min.add(object.getPosition()), max.add(object.getPosition()));

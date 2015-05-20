@@ -1,5 +1,6 @@
 package com.henrik.gdxFramework.core;
 
+import com.badlogic.gdx.utils.Array;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.State;
 
@@ -12,62 +13,67 @@ import java.util.Map;
  */
 public class GameStateCollection {
 
-    Map<Game.State,GameState> states;
+    private Array<GameState> states;
 
     public GameStateCollection() {
-        states = new HashMap<Game.State,GameState>();
+        states = new Array<GameState>();
     }
 
-    public void add(Game.State id, GameState component) {
-        states.put(id, component);
+    public void add(GameState state) {
+        states.add(state);
     }
-    public void remove(int id) {
-        states.remove(id);
+
+    public void remove(Class<?> stateType) {
+        for(int i = 0; i < states.size; i++) {
+            if(states.get(i).getClass() == stateType) {
+                states.removeIndex(i);
+                return;
+            }
+        }
     }
 
     /**
      * Enables the given component, and disables all other states.
-     * @param id The component to enable.
      */
-    public void enable(Game.State id) {
-        Iterator it = states.entrySet().iterator();
-        while(it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            GameState val = (GameState)pair.getValue();
-            if(pair.getKey().equals(id)) {
-                val.setEnabled(true);
-            }
-            else {
-               val.setEnabled(false);
-               val.clear();
+    public void enable(Class<?> type) {
+        for(int i = 0; i < states.size; i++) {
+            if(states.get(i).getClass() == type) {
+                states.get(i).setEnabled(true);
+            } else {
+                states.get(i).setEnabled(false);
+                states.get(i).clear();
             }
         }
     }
 
     public void update() {
-        Iterator it = states.entrySet().iterator();
-        while(it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            GameState val = (GameState)pair.getValue();
-            if(val.isUpdating()) {
-                val.update();
+        for(int i = 0; i < states.size; i++) {
+            GameState state = states.get(i);
+
+            if(state.isUpdating()) {
+                state.update();
             }
-            if(val.isRendering()) {
-                val.render();
+            if(state.isRendering()) {
+                state.render();
             }
         }
     }
 
-    public GameState get(Game.State state) {
-        return states.get(state);
+    public GameState get(Class<?> type) {
+        for(int i = 0; i < states.size; i++) {
+            if(states.get(i).getClass() == type) {
+                return states.get(i);
+            }
+        }
+
+        return null;
     }
 
     public  void dispose() {
-        Iterator it = states.entrySet().iterator();
-        while(it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            GameState val = (GameState)pair.getValue();
-            val.dispose();
+        for(int i = 0; i < states.size; i++) {
+            states.get(i).dispose();
         }
+
+        states.clear();
     }
 }

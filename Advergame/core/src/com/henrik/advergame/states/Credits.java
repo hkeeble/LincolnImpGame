@@ -25,7 +25,7 @@ public class Credits extends GameState {
 
             music.stop();
 
-            game.enableState(Game.State.TITLE_SCREEN);
+            game.enableState(TitleScreen.class);
             return super.touchDown(event, x, y, pointer, button);
         }
     }

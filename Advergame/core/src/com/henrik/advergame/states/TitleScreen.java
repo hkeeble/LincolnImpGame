@@ -33,12 +33,12 @@ public class TitleScreen extends GameState {
             assetManager.get("sounds/select.wav", Sound.class).play();
 
             if(((Game)game).getSaveGame().getLevel() == 1) {
-                game.enableState(Game.State.INTRO);
+                game.enableState(Intro.class);
                 return super.touchDown(event, x, y, pointer, button);
             }
 
-            game.getState(Game.State.IN_GAME, InGame.class).setContinueState();
-            game.enableState(Game.State.IN_GAME);
+            game.getState(InGame.class).setContinueState();
+            game.enableState(InGame.class);
             return super.touchDown(event, x, y, pointer, button);
         }
     }
@@ -51,7 +51,7 @@ public class TitleScreen extends GameState {
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
-            game.enableState(Game.State.LEVEL_SELECT);
+            game.enableState(LevelSelect.class);
             return super.touchDown(event, x, y, pointer, button);
         }
     }
@@ -64,7 +64,7 @@ public class TitleScreen extends GameState {
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
-            game.enableState(Game.State.CREDITS);
+            game.enableState(Credits.class);
             return super.touchDown(event, x, y, pointer, button);
         }
     }

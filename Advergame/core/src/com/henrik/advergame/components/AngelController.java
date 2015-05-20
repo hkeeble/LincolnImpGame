@@ -172,7 +172,7 @@ public class AngelController extends StateControllerComponent {
 
         locationAtStartOfMove.set(object.getPosition());
         currentTarget.set(currentWaypoint.getLocation().x * world.getLevel().getCellSize(), 0, currentWaypoint.getLocation().y * world.getLevel().getCellSize());
-        moveDirection.set(VectorMath.directionTo(locationAtStartOfMove, currentTarget));
+        VectorMath.directionTo(locationAtStartOfMove, currentTarget, moveDirection);
         distanceToTarget = locationAtStartOfMove.dst(currentTarget);
     }
 

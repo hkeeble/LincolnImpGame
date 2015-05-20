@@ -70,7 +70,7 @@ public class Map {
 
         String data = file.readString();
         String[] lines = data.split(END_OF_GRID_DELIM);
-        String[] rows = lines[0].split("\n");
+        String[] rows = lines[0].split("\r\n");
 
         this.grid = new TileState[rows[0].length()][rows.length];
         this.width = this.grid.length;
@@ -107,7 +107,7 @@ public class Map {
         }
 
         // Parse entities
-        String[] entityData = lines[1].split("\n");
+        String[] entityData = lines[1].split("\r\n");
         for (int i = 0; i < entityData.length; i++) {
             if (!entityData[i].equals("")) {
                 if (entityData[i].equals(END_OF_ENTITY_DELIM)) {

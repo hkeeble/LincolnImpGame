@@ -17,6 +17,7 @@ import com.henrik.advergame.utils.CollisionTags;
 import com.henrik.advergame.utils.Point;
 import com.henrik.advergame.utils.RandomUtils;
 import com.henrik.advergame.worlds.GameWorld;
+import com.henrik.gdxFramework.core.Renderer;
 import com.henrik.gdxFramework.core.World;
 import com.henrik.gdxFramework.entities.components.SpriteDecalGraphicsComponent;
 import com.henrik.gdxFramework.entities.components.PhysicsComponent;
@@ -39,16 +40,7 @@ public class AngelDog extends LevelEntity {
     private static TextureRegion messageBackground = Game.getUISkin().getRegion("speechBubble");
     
     // Timed Messages are static, as they must render to texture to create them
-    private TimedMessage[] timedMessages= { 
-    	new TimedMessage(MESSAGE_STRINGS[0], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0)),
-    	new TimedMessage(MESSAGE_STRINGS[1], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0)),
-    	new TimedMessage(MESSAGE_STRINGS[2], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0)),
-    	new TimedMessage(MESSAGE_STRINGS[3], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0)),
-    	new TimedMessage(MESSAGE_STRINGS[4], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0)),
-    	new TimedMessage(MESSAGE_STRINGS[5], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0)),
-    	new TimedMessage(MESSAGE_STRINGS[6], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0)),
-    	new TimedMessage(MESSAGE_STRINGS[7], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0))
-    };
+    private TimedMessage[] timedMessages;
     
     private long millisToNextMessage;
     private long millisAtLastMessage;
@@ -56,8 +48,19 @@ public class AngelDog extends LevelEntity {
     private final long MIN_MILLIS_TO_NEXT_MESSAGE = 2500;
     private final long MAX_MILLITS_TO_NEXT_MESSAGE = 5500;
 
-    public AngelDog(AssetManager assetManager, Vector3 initialPos, ArrayList<Point> wayPoints) {
+    public AngelDog(AssetManager assetManager, Vector3 initialPos, ArrayList<Point> wayPoints, Renderer renderer) {
         super(new PhysicsComponent(new btBoxShape(new Vector3(0.6f, 1.5f, 0.4f)), CollisionTags.ANGEL_DOG));
+
+        timedMessages = new TimedMessage[] {
+                    new TimedMessage(MESSAGE_STRINGS[0], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[1], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[2], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[3], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[4], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[5], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[6], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[7], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this)
+        };
 
         controllerComponent = new AngelDogController(initialPos, wayPoints);
         graphicsComponent = new SpriteDecalGraphicsComponent(2, 2, AnimationFactory.createMoveSet(assetManager.get("sprites/dog.png", Texture.class), 128, 160, 0.6f));

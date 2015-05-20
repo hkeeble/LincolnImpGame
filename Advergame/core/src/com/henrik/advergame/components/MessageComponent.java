@@ -20,8 +20,6 @@ import java.util.ArrayList;
  */
 public class MessageComponent extends DecalGraphicsComponent {
 
-    private static SpriteBatch batch;
-    
     private FrameBuffer fbo;
 
     private final float DECAL_WIDTH_PER_CHAR = 0.2f;
@@ -34,7 +32,7 @@ public class MessageComponent extends DecalGraphicsComponent {
 
     private int[] lineHeights;
 
-    public MessageComponent(String text, BitmapFont font, Color textColor, TextureRegion background) {
+    public MessageComponent(String text, BitmapFont font, Color textColor, TextureRegion background, Renderer renderer) {
 
         Color origColor = font.getColor();
         font.setColor(textColor);
@@ -95,40 +93,39 @@ public class MessageComponent extends DecalGraphicsComponent {
         }
 
         fbo = new FrameBuffer(Pixmap.Format.RGBA8888, width + (HORIZONTAL_PADDING*2), sum(lineHeights) + (VERTICAL_PADDING*2), false);
-        
-        batch = new SpriteBatch();
-        TextureRegion tex = renderToTexture(font, lines, background);
-        batch.dispose();
-        
+
+        TextureRegion tex = renderToTexture(font, lines, background, renderer);
+
         decal = Decal.newDecal(DECAL_WIDTH_PER_CHAR * lines.get(widestIndex).length(), DECAL_HEIGHT_PER_LINE*lines.size(), tex, true);
         this.billboard = true;
 
         font.setColor(origColor);
     }
 
-    private TextureRegion renderToTexture(BitmapFont font, ArrayList<String> lines, TextureRegion background) {
+    private TextureRegion renderToTexture(BitmapFont font, ArrayList<String> lines, TextureRegion background, Renderer renderer) {
         // Set up an ortho projection matrix
         Matrix4 projMat = new Matrix4();
         projMat.setToOrtho2D(0, 0, fbo.getWidth(), fbo.getHeight());
-        batch.setProjectionMatrix(projMat);
+        renderer.getSpriteBatch().setProjectionMatrix(projMat);
 
         // Render the text onto an FBO
         Gdx.gl.glDisable(GL20.GL_CULL_FACE);
         fbo.begin();
-        batch.begin();
-        batch.draw(background, 0, 0, fbo.getWidth(), fbo.getHeight());
+        renderer.getSpriteBatch().begin();
+        renderer.getSpriteBatch().draw(background, 0, 0, fbo.getWidth(), fbo.getHeight());
         int height = 0;
         for(int i = 0; i < lines.size(); i++) {
-            font.draw(batch, lines.get(i), HORIZONTAL_PADDING, fbo.getHeight() - height);
+            font.draw(renderer.getSpriteBatch(), lines.get(i), HORIZONTAL_PADDING, fbo.getHeight() - height);
             height += lineHeights[i];
         }
-        batch.end();
+        renderer.getSpriteBatch().end();
         fbo.end();
         Gdx.gl.glEnable(GL20.GL_CULL_FACE);
 
         // Flip the texture, and return it
         TextureRegion tex = new TextureRegion(fbo.getColorBufferTexture());
         tex.flip(false, true);
+
         return tex;
     }
 

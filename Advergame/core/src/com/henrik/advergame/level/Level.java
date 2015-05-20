@@ -38,9 +38,12 @@ import com.henrik.advergame.entities.DecalEntity;
 import com.henrik.advergame.entities.ModelEntity;
 import com.henrik.advergame.pathfinding.NavigationMesh;
 import com.henrik.gdxFramework.core.InputHandler;
+import com.henrik.gdxFramework.core.Renderer;
+import com.henrik.gdxFramework.core.World;
 import com.henrik.gdxFramework.entities.components.DecalGraphicsComponent;
 import com.henrik.gdxFramework.entities.components.ModelGraphicsComponent;
 import com.henrik.gdxFramework.entities.components.PhysicsComponent;
+import com.henrik.advergame.entities.ModelObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -190,7 +193,7 @@ public class Level {
 
     // Wall models and chunked entities
     private ArrayList<Model> models;
-    private ArrayList<ModelEntity> modelInstances;
+    private ArrayList<ModelObject> modelInstances;
     private ArrayList<btBoxShape> wallBoxes;
 
     // Grid data
@@ -252,7 +255,7 @@ public class Level {
     private Level(int cellSize, AssetManager assetManager, BitmapFont messageFont) {
 
         models = new ArrayList<Model>();
-        modelInstances = new ArrayList<ModelEntity>();
+        modelInstances = new ArrayList<ModelObject>();
         wallBoxes = new ArrayList<btBoxShape>();
         builder = new ModelBuilder();
 
@@ -299,19 +302,19 @@ public class Level {
      * Creates a new level and loads one from a file.
      * @param name The map to loadGame.
      */
-    public Level(String name, int cellSize, AssetManager assetManager, BitmapFont messageFont) {
+    public Level(String name, int cellSize, AssetManager assetManager, BitmapFont messageFont, World world) {
         this(cellSize, assetManager, messageFont);
 
         this.cellSize = cellSize;
 
-        Load(name);
+        Load(world, name);
     }
 
     /**
      * Disposes of the existing level, and loads a new one into this object.
      * @param name
      */
-    public void Load(String name) {
+    public void Load(World world, String name) {
 
         dispose();
 
@@ -344,7 +347,7 @@ public class Level {
         this.chunkWidth = map.getWidth()/CHUNK_SIZE;
         this.chunkCount = chunkHeight + chunkWidth;
 
-        build();
+        build(world.getRenderer());
     }
 
     /**
@@ -361,10 +364,10 @@ public class Level {
         return objCount;
     }
 
-    private void build() {
+    private void build(Renderer renderer) {
         buildWalls(); // Build wall models
         buildBoundaryWalls(); // Build boundaries
-        buildEntities();
+        buildEntities(renderer);
 
         // Create the exit entity
         exitEntity = new DecalEntity(new DecalGraphicsComponent(2, 4, new TextureRegion(stairsTexture), false),
@@ -393,7 +396,7 @@ public class Level {
         destructableBlockModel = builder.end();
     }
 
-    private void buildEntities() {
+    private void buildEntities(Renderer renderer) {
 
         // Build entity models of appropriate sizes
        buildEntityModels();
@@ -412,7 +415,7 @@ public class Level {
                     wayPoints.add(new Point(p.x * cellSize, p.y * cellSize));
                 }
 
-                dynamicEntities.add(new AngelDog(assetManager, initialPos, wayPoints));
+                dynamicEntities.add(new AngelDog(assetManager, initialPos, wayPoints, renderer));
             } else if(entity.getId() == MapEntityState.DOOR.getID()) {
                 if(grid[entity.getLocation().x + 1][entity.getLocation().y] != TileState.FLOOR && grid[entity.getLocation().x - 1][entity.getLocation().y] != TileState.FLOOR) {
                     staticEntities.add(new Door(initialPos, downDoorModelLock, true));
@@ -480,7 +483,7 @@ public class Level {
                 }
 
                 messageSequences.add(new TriggeredMessageSequence(initialPos, cellSize, msgs, messageFont, Color.BLACK,
-                        Game.getUISkin().getRegion("speechBubble"), new Vector3(messageEntity.getFocusPoint().x * cellSize, 2f, messageEntity.getFocusPoint().y * cellSize)));
+                        Game.getUISkin().getRegion("speechBubble"), new Vector3(messageEntity.getFocusPoint().x * cellSize, 2f, messageEntity.getFocusPoint().y * cellSize), renderer));
             }
         }
     }
@@ -532,8 +535,7 @@ public class Level {
         compoundShape.addChildShape(new Matrix4().trn(bottomWallPosition), new btBoxShape(horizontalWallDims));
         compoundShape.addChildShape(new Matrix4().trn(topWallPosition), new btBoxShape(horizontalWallDims));
 
-        modelInstances.add(new ModelEntity(new ModelGraphicsComponent(new ModelInstance(m)),
-                new PhysicsComponent(compoundShape, CollisionTags.STATIC_SOLID)));
+        modelInstances.add(new ModelObject(new ModelGraphicsComponent(new ModelInstance(m))));
     }
 
     private void createWallSegment(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
@@ -659,7 +661,7 @@ public class Level {
 
         // Construct the segments
         builder.begin();
-        btCompoundShape collisionShape = new btCompoundShape(); // Create a new compound shape for this chunk
+       // btCompoundShape collisionShape = new btCompoundShape(); // Create a new compound shape for this chunk
 
         // Determine first texture
         TileState currentWallType = segments.get(0).getWallType();
@@ -680,10 +682,10 @@ public class Level {
                 center.z = (dimensions.z / 2.0f) + (seg.getY() * cellSize) - ((float) cellSize / 2.0f);
 
                 // Add wall boxes to a seperate array, so we can manage memory instead of leaving them to the garbage collector
-                wallBoxes.add(new btBoxShape(new Vector3(((float) cellSize / 2) * seg.getWidth(),
-                        (float) cellSize / 2, ((float) cellSize / 2) * seg.getHeight())));
+                //wallBoxes.add(new btBoxShape(new Vector3(((float) cellSize / 2) * seg.getWidth(),
+                        //(float) cellSize / 2, ((float) cellSize / 2) * seg.getHeight())));
 
-                collisionShape.addChildShape(new Matrix4().trn(center), wallBoxes.get(wallBoxes.size()-1));
+                //collisionShape.addChildShape(new Matrix4().trn(center), wallBoxes.get(wallBoxes.size()-1));
 
                 // If we have a different wall type, we need a new mesh part and a new texture bind
                 if(seg.getWallType() != currentWallType) {
@@ -711,8 +713,7 @@ public class Level {
 
         // Add model for memory management, and add new entity to wall chunk collection
         models.add(builder.end());
-        modelInstances.add(new ModelEntity(new ModelGraphicsComponent(new ModelInstance(models.get(models.size() - 1))),
-                new PhysicsComponent(collisionShape, CollisionTags.STATIC_SOLID)));
+        modelInstances.add(new ModelObject(new ModelGraphicsComponent(new ModelInstance(models.get(models.size() - 1)))));
         modelInstances.get(modelInstances.size()-1).setPosition(new Vector3((chunk.getX() * CHUNK_SIZE) * cellSize, 0, (chunk.getY() * CHUNK_SIZE) * cellSize)); // Transform entire chunk entity to correct location
     }
 
@@ -925,7 +926,7 @@ public class Level {
     }
 
     public void disposeWalls() {
-        for(ModelEntity model : modelInstances) {
+        for(ModelObject model : modelInstances) {
             model.dispose();
         }
         for(Model model : models) {
@@ -1008,7 +1009,7 @@ public class Level {
     /**
      * Get all model entities within this level.
      */
-    public ArrayList<ModelEntity> getModelEntities() {
+    public ArrayList<ModelObject> getModelEntities() {
         return modelInstances;
     }
 

@@ -38,8 +38,8 @@ public class LevelSelect extends GameState {
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
-            game.getState(Game.State.IN_GAME, InGame.class).setLevelState(levelSelectHUD.getCurrentlySelected()+1);
-            game.enableState(Game.State.IN_GAME);
+            game.getState(InGame.class).setLevelState(levelSelectHUD.getCurrentlySelected()+1);
+            game.enableState(InGame.class);
             return super.touchDown(event, x, y, pointer, button);
         }
     }
@@ -51,7 +51,7 @@ public class LevelSelect extends GameState {
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
-            game.enableState(Game.State.TITLE_SCREEN);
+            game.enableState(TitleScreen.class);
             return super.touchDown(event, x, y, pointer, button);
         }
     }

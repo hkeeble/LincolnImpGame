@@ -8,19 +8,9 @@ import com.badlogic.gdx.math.Vector3;
  */
 public class VectorMath {
 
-    /**
-     * Gets the direction from point A to point B as a normalised vector.
-     * @param a The first point.
-     * @param b The point to get the direction to.
-     * @return
-     */
-    public static Vector3 directionTo(Vector3 a, Vector3 b) {
-        Vector3 target = new Vector3(b);
-        Vector3 position = new Vector3(a);
-        Vector3 direction = new Vector3(target.sub(position));
-        direction.nor();
-        return direction;
-    }
+    private static Vector3 temp = new Vector3();
+    private static Vector3 temp2 = new Vector3();
+    private static Vector3 temp3 = new Vector3();
 
     /**
      * Gets the direction from point A to point B as a normalised vector.
@@ -28,12 +18,12 @@ public class VectorMath {
      * @param b The point to get the direction to.
      * @return
      */
-    public static Vector2 directionTo(Vector2 a, Vector2 b) {
-        Vector2 target = new Vector2(b);
-        Vector2 position = new Vector2(a);
-        Vector2 direction = new Vector2(target.sub(position));
-        direction.nor();
-        return direction;
+    public static void directionTo(Vector3 a, Vector3 b, Vector3 out) {
+        temp.set(b);
+        temp2.set(a);
+        temp3.set(temp.sub(temp2));
+        temp3.nor();
+        out.set(temp3);
     }
 
     /**

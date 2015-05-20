@@ -11,7 +11,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="Lincoln Imp: A Smashing Adventure"
+        android:label="Lincoln Imp"
         android:theme="@style/GdxTheme" >
         <activity
             android:name="com.henrik.gdxFramework.android.AndroidLauncher"
