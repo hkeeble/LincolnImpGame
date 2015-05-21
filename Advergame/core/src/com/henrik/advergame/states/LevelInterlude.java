@@ -97,7 +97,6 @@ public class LevelInterlude extends GameState {
         addAsset("sounds/select.wav", Sound.class);
         addAsset("sounds/win.wav", Music.class);
 
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
     }
 
     @Override
@@ -112,6 +111,8 @@ public class LevelInterlude extends GameState {
 
         winMusic = assetManager.get("sounds/win.wav", Music.class);
         winMusic.play();
+
+        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
 
         musicPlaying = false;
     }
@@ -138,13 +139,16 @@ public class LevelInterlude extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        music.dispose();
+        if(music != null)
+            music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-
+        if(music != null)
+            music.dispose();
+        super.clear();
     }
 
 }

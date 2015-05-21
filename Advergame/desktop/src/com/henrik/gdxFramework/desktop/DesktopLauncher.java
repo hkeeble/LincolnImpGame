@@ -11,7 +11,7 @@ import java.io.File;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 
-/*        File[] filesUI = new File("./ui/").listFiles();
+        File[] filesUI = new File("./ui/").listFiles();
         if(filesUI!=null) {
             for(File f : filesUI) {
                 f.delete();
@@ -21,7 +21,7 @@ public class DesktopLauncher {
         // Run the texture packer to create the UI sprite texture atlas
         TexturePacker.Settings settings = new TexturePacker.Settings();
         settings.atlasExtension = ".pack";
-        TexturePacker.process(settings, "../../images/ui", "./ui/", "ui");*/
+        TexturePacker.process(settings, "../../images/ui", "./ui/", "ui");
 
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Lincoln Imp: A Smashing Adventure";

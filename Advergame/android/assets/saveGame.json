@@ -8,10 +8,16 @@ levelData: [
 	}
 	{
 		level: 2
+		score: 50
+		objectsDestroyed: 1
+		potentialObjects: 5
+	}
+	{
+		level: 3
 		score: 0
 		objectsDestroyed: 0
 		potentialObjects: 0
 	}
 ]
-currentLevel: 2
+currentLevel: 3
 }

@@ -127,19 +127,18 @@ public class InGame extends GameState {
 
         addAsset("ui/ui.pack", TextureAtlas.class);
 
-        addAsset("sounds/select.wav", Sound.class);
-        addAsset("sounds/talk.wav", Sound.class);
-        addAsset("sounds/keyGet.wav", Sound.class);
-        addAsset("sounds/hit1.wav", Sound.class);
-        addAsset("sounds/hit2.wav", Sound.class);
-        addAsset("sounds/hit3.wav", Sound.class);
-        addAsset("sounds/lose.wav", Sound.class);
-        addAsset("sounds/win.wav", Sound.class);
-        addAsset("sounds/destroy.wav", Sound.class);
-        addAsset("sounds/switch.wav", Sound.class);
-        addAsset("sounds/teleport.wav", Sound.class);
-        addAsset("sounds/hurt.wav", Sound.class);
-        addAsset("sounds/teleport.wav", Sound.class);
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("sounds/talk.mp3", Sound.class);
+        addAsset("sounds/keyGet.mp3", Sound.class);
+        addAsset("sounds/hit1.mp3", Sound.class);
+        addAsset("sounds/hit2.mp3", Sound.class);
+        addAsset("sounds/hit3.mp3", Sound.class);
+        addAsset("sounds/lose.mp3", Sound.class);
+        addAsset("sounds/win.mp3", Sound.class);
+        addAsset("sounds/destroy.mp3", Sound.class);
+        addAsset("sounds/switch.mp3", Sound.class);
+        addAsset("sounds/teleport.mp3", Sound.class);
+        addAsset("sounds/hurt.mp3", Sound.class);
     }
 
     @Override
@@ -207,5 +206,7 @@ public class InGame extends GameState {
             world.dispose();
             world = null;
         }
+
+        super.clear();
     }
 }

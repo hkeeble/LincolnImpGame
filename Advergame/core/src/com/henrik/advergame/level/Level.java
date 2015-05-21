@@ -18,11 +18,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.bullet.collision.btBoxShape;
 import com.badlogic.gdx.physics.bullet.collision.btCompoundShape;
+import com.badlogic.gdx.physics.bullet.collision.btCompoundShapeChild;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Pool;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.ModelFactory;
 import com.henrik.advergame.entities.LevelEntity;
+import com.henrik.advergame.entities.ModelEntity;
 import com.henrik.advergame.level.shared.*;
 import com.henrik.advergame.level.shared.entities.*;
 import com.henrik.advergame.systems.MessageSequence;
@@ -190,7 +192,7 @@ public class Level {
 
     // Wall models and chunked entities
     private ArrayList<Model> models;
-    private ArrayList<ModelObject> modelInstances;
+    private ArrayList<ModelEntity> modelInstances;
     private ArrayList<btBoxShape> wallBoxes;
 
     // Grid data
@@ -252,7 +254,7 @@ public class Level {
     private Level(int cellSize, AssetManager assetManager, BitmapFont messageFont) {
 
         models = new ArrayList<Model>();
-        modelInstances = new ArrayList<ModelObject>();
+        modelInstances = new ArrayList<ModelEntity>();
         wallBoxes = new ArrayList<btBoxShape>();
         builder = new ModelBuilder();
 
@@ -533,50 +535,60 @@ public class Level {
         compoundShape.addChildShape(new Matrix4().trn(bottomWallPosition), new btBoxShape(horizontalWallDims));
         compoundShape.addChildShape(new Matrix4().trn(topWallPosition), new btBoxShape(horizontalWallDims));
 
-        modelInstances.add(new ModelObject(new ModelGraphicsComponent(new ModelInstance(m))));
+        modelInstances.add(new ModelEntity(new ModelGraphicsComponent(new ModelInstance(m)),
+                new PhysicsComponent(compoundShape, CollisionTags.STATIC_SOLID)));
     }
 
-    // TODO Optimize this!
+    private static Vector3 temp1 = new Vector3();
+    private static Vector3 temp2 = new Vector3();
+    private static Vector3 temp3 = new Vector3();
+    private static Vector3 temp4 = new Vector3();
+    private static Vector3 temp5 = new Vector3();
     private void createWallSegment(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
         // TOP
         mpb.setUVRange(0f, 0f, dimensions.z, dimensions.x);
-        mpb.rect(new Vector3(center.x - (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f)), // lower left
-                new Vector3(center.x - (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f)), // upper left
-                new Vector3(center.x + (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f)), // upper right
-                new Vector3(center.x + (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f)), // lower right
-                new Vector3(0, 1, 0));
+        temp1.set(center.x - (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f));
+        temp2.set(center.x - (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f));
+        temp3.set(center.x + (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f));
+        temp4.set(center.x + (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f));
+        temp5.set(0, 1, 0);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // LEFT
         mpb.setUVRange(0f, 0f, dimensions.x, dimensions.z);
-        mpb.rect(new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper right
-                new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower right
-                new Vector3(-1,0,0));
+        temp1.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp2.set(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp3.set(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp4.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp5.set(-1,0,0);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // RIGHT
         mpb.setUVRange(0f, 0f, dimensions.x, dimensions.z);
-        mpb.rect(new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper right
-                new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower right
-                new Vector3(1,0,0));
+        temp1.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp2.set(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp3.set(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp4.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp5.set(1,0,0);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // FRONT
         mpb.setUVRange(0f, 0f, dimensions.y, dimensions.x);
-        mpb.rect(new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper right
-                new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower right
-                new Vector3(0,0,-1));
+        temp1.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp2.set(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp3.set(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp4.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp5.set(0,0,-1);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // BACK
         mpb.setUVRange(0f, 0f, dimensions.y, dimensions.x);
-        mpb.rect(new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper right
-                new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower right
-                new Vector3(0,0,-1));
+        temp1.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp2.set(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp3.set(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp4.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp5.set(0,0,-1);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
     }
 
     private void createBox(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
@@ -584,47 +596,50 @@ public class Level {
         createDoorSides(mpb, center, dimensions);
     }
 
-    // TODO Optimize this!
     private void createDoorMain(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
         // FRONT
-        mpb.rect(new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper right
-                new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower right
-                new Vector3(0,0,-1));
+        temp1.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp2.set(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp3.set(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp4.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp5.set(0,0,-1);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // BACK
-        mpb.rect(new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper right
-                new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower right
-                new Vector3(0,0,-1));
+        temp1.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp2.set(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp3.set(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp4.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp5.set(0,0,-1);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
     }
 
     // TODO Optimize this!
     private void createDoorSides(MeshPartBuilder mpb, Vector3 center, Vector3 dimensions) {
         // TOP
         mpb.setUVRange(0, 0, 1, 1);
-        mpb.rect(new Vector3(center.x - (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f)), // lower left
-                new Vector3(center.x - (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f)), // upper left
-                new Vector3(center.x + (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f)), // upper right
-                new Vector3(center.x + (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f)), // lower right
-                new Vector3(0, 1, 0));
+        temp1.set(center.x - (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f));
+        temp2.set(center.x - (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f));
+        temp3.set(center.x + (dimensions.x / 2f), cellSize / 2f, center.z + (dimensions.z / 2f));
+        temp4.set(center.x + (dimensions.x / 2f), cellSize / 2f, center.z - (dimensions.z / 2f));
+        temp5.set(0, 1, 0);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // LEFT
-        mpb.rect(new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper left
-                new Vector3(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper right
-                new Vector3(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower right
-                new Vector3(-1,0,0));
+        temp1.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp2.set(center.x - (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp3.set(center.x - (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp4.set(center.x - (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp5.set(-1,0,0);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // RIGHT
-        mpb.rect(new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f)), // lower left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f)), // upper left
-                new Vector3(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f)), // upper right
-                new Vector3(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f)), // lower right
-                new Vector3(1,0,0));
-
+        temp1.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z - (dimensions.z/2f));
+        temp2.set(center.x + (dimensions.x/2f), cellSize/2f, center.z - (dimensions.z/2f));
+        temp3.set(center.x + (dimensions.x/2f), cellSize/2f, center.z + (dimensions.z/2f));
+        temp4.set(center.x + (dimensions.x/2f), -cellSize/2f, center.z + (dimensions.z/2f));
+        temp5.set(1,0,0);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
     }
 
     // TODO Optimize this!
@@ -664,7 +679,7 @@ public class Level {
 
         // Construct the segments
         builder.begin();
-       // btCompoundShape collisionShape = new btCompoundShape(); // Create a new compound shape for this chunk
+        btCompoundShape collisionShape = new btCompoundShape(); // Create a new compound shape for this chunk
 
         // Determine first texture
         TileState currentWallType = segments.get(0).getWallType();
@@ -674,21 +689,22 @@ public class Level {
                 new Material(TextureAttribute.createDiffuse(currentTexture)));
 
         // Ignore walls for chunks with no wall segments
+        Vector3 center = new Vector3();
+        Vector3 dimensions = new Vector3();
         if(segments.size() > 0) {
             for (Segment seg : segments) {
 
                 // Calculate the correct position for this segment
-                Vector3 center = new Vector3();
-                Vector3 dimensions = new Vector3((float) seg.getWidth() * (float) cellSize, cellSize, (float) seg.getHeight() * (float) cellSize);
+                dimensions.set((float) seg.getWidth() * (float) cellSize, cellSize, (float) seg.getHeight() * (float) cellSize);
                 center.x = (dimensions.x / 2.0f) + (seg.getX() * cellSize) - ((float) cellSize / 2.0f);
                 center.y = 0;
                 center.z = (dimensions.z / 2.0f) + (seg.getY() * cellSize) - ((float) cellSize / 2.0f);
 
                 // Add wall boxes to a seperate array, so we can manage memory instead of leaving them to the garbage collector
-                //wallBoxes.add(new btBoxShape(new Vector3(((float) cellSize / 2) * seg.getWidth(),
-                        //(float) cellSize / 2, ((float) cellSize / 2) * seg.getHeight())));
+                wallBoxes.add(new btBoxShape(new Vector3(((float) cellSize / 2) * seg.getWidth(),
+                        (float) cellSize / 2, ((float) cellSize / 2) * seg.getHeight())));
 
-                //collisionShape.addChildShape(new Matrix4().trn(center), wallBoxes.get(wallBoxes.size()-1));
+                collisionShape.addChildShape(new Matrix4().trn(center), wallBoxes.get(wallBoxes.size()-1));
 
                 // If we have a different wall type, we need a new mesh part and a new texture bind
                 if(seg.getWallType() != currentWallType) {
@@ -708,15 +724,18 @@ public class Level {
                 new Material(TextureAttribute.createDiffuse(floorTexture)));
         // mpb.setUVRange(0f, 0f, (cellSize/3) * CHUNK_SIZE, (cellSize) * CHUNK_SIZE);
         mpb.setVertexTransform(new Matrix4().trn(-(float)cellSize/2.0f, 0, -(float)cellSize/2.0f));
-        mpb.rect(new Vector3(0, -(float) cellSize / 2.0f, 0), // lower left // Backwards winding order here?
-                new Vector3(0, -(float) cellSize / 2.0f, (cellSize * CHUNK_SIZE)), // upper left
-                new Vector3(cellSize * CHUNK_SIZE, -(float) cellSize / 2.0f, (cellSize * CHUNK_SIZE)), // upper right
-                new Vector3(cellSize * CHUNK_SIZE, -(float) cellSize / 2.0f, 0), // lower right
-                new Vector3(0, 1, 0)); // normal
+
+        temp1.set(0, -(float) cellSize / 2.0f, 0);
+        temp2.set(0, -(float) cellSize / 2.0f, (cellSize * CHUNK_SIZE));
+        temp3.set(cellSize * CHUNK_SIZE, -(float) cellSize / 2.0f, (cellSize * CHUNK_SIZE));
+        temp4.set(cellSize * CHUNK_SIZE, -(float) cellSize / 2.0f, 0);
+        temp5.set(0, 1, 0);
+        mpb.rect(temp1, temp2, temp3, temp4, temp5);
 
         // Add model for memory management, and add new entity to wall chunk collection
         models.add(builder.end());
-        modelInstances.add(new ModelObject(new ModelGraphicsComponent(new ModelInstance(models.get(models.size() - 1)))));
+        modelInstances.add(new ModelEntity(new ModelGraphicsComponent(new ModelInstance(models.get(models.size() - 1))),
+                new PhysicsComponent(collisionShape, CollisionTags.STATIC_SOLID)));
         modelInstances.get(modelInstances.size()-1).setPosition(new Vector3((chunk.getX() * CHUNK_SIZE) * cellSize, 0, (chunk.getY() * CHUNK_SIZE) * cellSize)); // Transform entire chunk entity to correct location
     }
 
@@ -902,7 +921,7 @@ public class Level {
     }
 
     public void disposeWalls() {
-        for(ModelObject model : modelInstances) {
+        for(ModelEntity model : modelInstances) {
             model.dispose();
         }
         for(Model model : models) {
@@ -975,7 +994,7 @@ public class Level {
     /**
      * Get all model entities within this level.
      */
-    public ArrayList<ModelObject> getModelEntities() {
+    public ArrayList<ModelEntity> getModelEntities() {
         return modelInstances;
     }
 

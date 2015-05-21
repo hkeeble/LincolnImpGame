@@ -4,9 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.hud.TitleHUD;
 import com.henrik.advergame.hud.tables.TitleDataTable;
@@ -28,7 +30,7 @@ public class TitleScreen extends GameState {
     {
         @Override
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-            music.stop();
+           // music.stop();
 
             assetManager.get("sounds/select.wav", Sound.class).play();
 
@@ -75,10 +77,9 @@ public class TitleScreen extends GameState {
         setLoadState(new LoadingScreen(assetManager, game.hud));
 
         addAsset("ui/ui.pack", TextureAtlas.class);
+        addAsset("textures/titleScreen.png", Texture.class);
 
         addAsset("sounds/select.wav", Sound.class);
-
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
     }
 
     @Override
@@ -96,9 +97,10 @@ public class TitleScreen extends GameState {
         game.hud.getMainTable().left().padLeft(HUD.WIDTH/9);
         game.hud.getMainTable().add(titleHUD).padBottom(30).row();
         game.hud.getMainTable().add(dataTable);
-        game.hud.getMainTable().setBackground(Game.getUISkin().getDrawable("titleScreen"));
+        game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/titleScreen.png", Texture.class))));
 
-        music.loop();
+         music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
+       // music.loop();
     }
 
     @Override
@@ -118,12 +120,13 @@ public class TitleScreen extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        music.dispose();
+        //music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-
+        //music.dispose();
+        super.clear();
     }
 }

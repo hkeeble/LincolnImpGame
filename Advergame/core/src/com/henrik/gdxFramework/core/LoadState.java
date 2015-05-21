@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
+import com.badlogic.gdx.utils.Array;
 import com.henrik.advergame.Game;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class LoadState {
     }
 
     protected HUD hud;
+    private Array<AssetDescriptor<?>> assetsToLoad;
     private AssetManager assetManager;
     private AssetErrorListener errorListener;
 
@@ -41,6 +43,8 @@ public class LoadState {
 
         errorAssets = new ArrayList<String>();
 
+        assetsToLoad = new Array<AssetDescriptor<?>>();
+
         this.hud = hud;
         this.assetManager = assetManager;
         this.assetManager.setErrorListener(errorListener);
@@ -48,6 +52,10 @@ public class LoadState {
 
     public void initialize() {
         done = false;
+
+        for(int i = 0; i < assetsToLoad.size; i++) {
+            assetManager.load(assetsToLoad.get(i));
+        }
     }
 
     public void setAssetManager(AssetManager assetManager) {
@@ -56,12 +64,8 @@ public class LoadState {
     }
 
     public void addAsset(String path, Class<?> type) {
-        assetManager.load(path, type);
+        assetsToLoad.add(new AssetDescriptor(path, type));
         done = false;
-    }
-
-    public void addFont(String fontName, FreetypeFontLoader.FreeTypeFontLoaderParameter parameters) {
-        assetManager.load(fontName, BitmapFont.class, parameters);
     }
 
     public void render() {
@@ -91,5 +95,4 @@ public class LoadState {
     public boolean isDone() {
         return done;
     }
-
 }

@@ -61,10 +61,6 @@ public abstract class GameState {
         loadState.addAsset(name, type);
     }
 
-    public void addFont(String name, FreetypeFontLoader.FreeTypeFontLoaderParameter parameters) {
-        loadState.addFont(name, parameters);
-    }
-
     protected void initialize() {
 
     }
@@ -98,6 +94,8 @@ public abstract class GameState {
     /**
      * Use clear to clear anything that is loaded on initialize. Clear will clear out the state before changing to a new state.
      */
-    protected abstract void clear();
+    protected void clear() {
+        assetManager.clear();
+    }
 
 }

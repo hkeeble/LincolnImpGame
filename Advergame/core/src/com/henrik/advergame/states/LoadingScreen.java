@@ -44,4 +44,9 @@ public class LoadingScreen extends LoadState {
         loadingAnimTexture.dispose();
         super.dispose();
     }
+
+    @Override
+    public void clear() {
+        super.clear();
+    }
 }

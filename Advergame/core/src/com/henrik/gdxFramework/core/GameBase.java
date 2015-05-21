@@ -15,10 +15,6 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer;
 import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.profiling.GLProfiler;
-import com.badlogic.gdx.utils.GdxRuntimeException;
-import com.henrik.advergame.Game;
-import com.henrik.advergame.State;
 
 import java.util.HashMap;
 

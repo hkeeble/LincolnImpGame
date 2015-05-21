@@ -95,14 +95,14 @@ public class GameWorld extends World {
         player = new Player(this, hud, assetManager, game.getInput());
 
         // Initialize the session manager, and attach all observers
-        sessionManager = new SessionManager(this, assetManager.get("sounds/keyGet.wav", Sound.class));
+        sessionManager = new SessionManager(this, assetManager.get("sounds/keyGet.mp3", Sound.class));
 
         // Get sounds
-        playerHurt = assetManager.get("sounds/hurt.wav", Sound.class);
-        hitSound1 = assetManager.get("sounds/hit1.wav", Sound.class);
-        hitSound2 = assetManager.get("sounds/hit2.wav", Sound.class);
-        hitSound3 = assetManager.get("sounds/hit3.wav", Sound.class);
-        teleportSound = assetManager.get("sounds/teleport.wav", Sound.class);
+        playerHurt = assetManager.get("sounds/hurt.mp3", Sound.class);
+        hitSound1 = assetManager.get("sounds/hit1.mp3", Sound.class);
+        hitSound2 = assetManager.get("sounds/hit2.mp3", Sound.class);
+        hitSound3 = assetManager.get("sounds/hit3.mp3", Sound.class);
+        teleportSound = assetManager.get("sounds/teleport.mp3", Sound.class);
 
         game.enableProfiling(); // ENABLE PROFILING
 
@@ -188,10 +188,10 @@ public class GameWorld extends World {
         registerDynamicEntity(player.getPhysicsComponent(), player);
 
         // Add the level walls to the collision world
-/*        ArrayList<ModelObject> walls = currentLevel.getModelEntities();
+        ArrayList<ModelEntity> walls = currentLevel.getModelEntities();
         for (ModelEntity e : walls) {
             registerStaticGeometry(e.getPhysicsComponent(), e);
-        }*/
+        }
 
         // Add all static level entities to the collision world
         ArrayList<LevelEntity> staticEntities = currentLevel.getStaticEntities();

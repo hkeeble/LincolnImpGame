@@ -39,7 +39,6 @@ public class Credits extends GameState {
 
         addAsset("ui/ui.pack", TextureAtlas.class);
         addAsset("sounds/select.wav", Sound.class);
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
     }
 
     @Override
@@ -49,6 +48,8 @@ public class Credits extends GameState {
         game.hud.getMainTable().setBackground(Game.getUISkin().getDrawable("titleScreen"));
         game.hud.getMainTable().add(creditsTable).center();
 
+
+        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
         music.loop();
     }
 
@@ -71,13 +72,16 @@ public class Credits extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        music.dispose();
+        if(music != null)
+            music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-
+        if(music != null)
+            music.dispose();
+        super.clear();
     }
 
 }

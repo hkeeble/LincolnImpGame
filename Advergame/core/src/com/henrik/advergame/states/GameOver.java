@@ -73,7 +73,6 @@ public class GameOver extends GameState {
         addAsset("sounds/select.wav", Sound.class);
         addAsset("sounds/lose.wav", Music.class);
 
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
     }
 
     @Override
@@ -86,6 +85,7 @@ public class GameOver extends GameState {
         game.hud.getMainTable().setBackground(Game.getUISkin().getDrawable("loseScreen"));
         game.hud.getMainTable().add(gameOverTable).center();
 
+        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
         loseMusic = assetManager.get("sounds/lose.wav", Music.class);
         loseMusic.play();
 
@@ -114,13 +114,16 @@ public class GameOver extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        music.dispose();
+        if(music != null)
+            music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-
+        if(music != null)
+            music.dispose();
+        super.clear();
     }
 
 

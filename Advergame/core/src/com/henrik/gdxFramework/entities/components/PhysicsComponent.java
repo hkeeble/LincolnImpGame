@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.bullet.collision.btCollisionObject;
 import com.badlogic.gdx.physics.bullet.collision.btCollisionShape;
 import com.badlogic.gdx.physics.bullet.collision.btCompoundShape;
 
+import com.badlogic.gdx.physics.bullet.collision.btCompoundShapeChild;
 import com.henrik.advergame.utils.CollisionTags;
 import com.henrik.gdxFramework.core.CollisionObject;
 import com.henrik.gdxFramework.core.CollisionTag;
@@ -116,6 +117,15 @@ public class PhysicsComponent {
 
     public void dispose() {
         collisionObject.dispose();
+
+        if(!collisionShape.isDisposed()) {
+            int children = collisionShape.getNumChildShapes();
+            for (int i = 0; i < children; i++) {
+                collisionShape.getChildShape(i).dispose();
+            }
+        }
+
         collisionShape.dispose();
+
     }
 }

@@ -92,8 +92,6 @@ public class LevelSelect extends GameState {
         addAsset("ui/ui.pack", TextureAtlas.class);
 
         addAsset("sounds/select.wav", Sound.class);
-
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
     }
 
     @Override
@@ -106,6 +104,7 @@ public class LevelSelect extends GameState {
 
         game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/sky.png", Texture.class))));
 
+        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
         music.loop();
     }
 
@@ -128,12 +127,15 @@ public class LevelSelect extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        music.dispose();
+        if(music != null)
+            music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-
+        if(music != null)
+            music.dispose();
+        super.clear();
     }
 }

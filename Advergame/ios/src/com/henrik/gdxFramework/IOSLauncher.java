@@ -19,4 +19,11 @@ public class IOSLauncher extends IOSApplication.Delegate {
         UIApplication.main(argv, null, IOSLauncher.class);
         pool.close();
     }
+
+    @Override
+    public void didReceiveMemoryWarning(UIApplication application) {
+        for (int i = 0; i < 10; i++) {
+            System.gc();
+        }
+    }
 }

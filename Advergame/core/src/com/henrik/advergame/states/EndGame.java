@@ -70,7 +70,6 @@ public class EndGame extends GameState {
 
         addAsset("ui/ui.pack", TextureAtlas.class);
         addAsset("sounds/select.wav", Sound.class);
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
     }
 
     @Override
@@ -85,6 +84,8 @@ public class EndGame extends GameState {
         game.hud.getMainTable().setBackground(endScreen1);
         game.hud.getMainTable().add(msgTable).padTop(400f);
 
+
+        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
         music.loop();
     }
 
@@ -101,12 +102,16 @@ public class EndGame extends GameState {
 
     @Override
     protected void dispose() {
-        music.dispose();
+        if(music != null)
+            music.dispose();
         super.dispose();
     }
 
     @Override
     protected void clear() {
+        if(music != null)
+            music.dispose();
+        super.clear();
     }
 
 }
