@@ -27,8 +27,11 @@ public class GameOverTable extends Table {
         Table headingTable = new Table();
         Table buttonTable = new Table();
 
-        Label titleLabel = HUD.makeLabel(0, 0, Color.BLACK, "GAME OVER!", titleFont);
-        Label subtitleLabel = HUD.makeLabel(0, 0, Color.BLACK, "You got caught...", mainFont);
+        Label.LabelStyle titleStyle = new Label.LabelStyle(titleFont, Color.BLACK);
+        Label.LabelStyle mainStyle = new Label.LabelStyle(mainFont, Color.BLACK);
+
+        Label titleLabel = HUD.makeLabel(0, 0, "GAME OVER!", titleStyle);
+        Label subtitleLabel = HUD.makeLabel(0, 0, "You got caught...", mainStyle);
         Button exitButton = HUD.makeButton(0, 0, exitListener, uiSkin.getDrawable("exitButton"), uiSkin.getDrawable("exitButton"), uiSkin.getDrawable("exitButton"));
         Button replayButton = HUD.makeButton(0, 0, replayListener, uiSkin.getDrawable("replayButton"), uiSkin.getDrawable("replayButton"), uiSkin.getDrawable("replayButton"));
 

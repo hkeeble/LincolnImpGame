@@ -16,6 +16,9 @@
     <resource>
       <directory>data</directory>
     </resource>
+      <resource>
+          <directory>resources</directory>
+      </resource>
   </resources>
   <forceLinkClasses>
     <pattern>com.badlogic.gdx.scenes.scene2d.ui.*</pattern>

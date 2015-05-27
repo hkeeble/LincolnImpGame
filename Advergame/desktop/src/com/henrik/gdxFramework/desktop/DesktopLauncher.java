@@ -11,9 +11,31 @@ import java.io.File;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 
-        File[] filesUI = new File("./ui/").listFiles();
-        if(filesUI!=null) {
-            for(File f : filesUI) {
+        File[] uiInGame = new File("./ui/uiInGame/").listFiles();
+        File[] uiInterlude = new File("./ui/uiInterlude/").listFiles();
+        File[] uiLevelSelect = new File("./ui/uiLevelSelect/").listFiles();
+        File[] uiTitle = new File("./ui/uiTitle/").listFiles();
+
+        if(uiInGame!=null) {
+            for(File f : uiInGame) {
+                f.delete();
+            }
+        }
+
+        if(uiInterlude!=null) {
+            for(File f : uiInterlude) {
+                f.delete();
+            }
+        }
+
+        if(uiLevelSelect!=null) {
+            for(File f : uiLevelSelect) {
+                f.delete();
+            }
+        }
+
+        if(uiTitle!=null) {
+            for(File f : uiTitle) {
                 f.delete();
             }
         }
@@ -21,7 +43,11 @@ public class DesktopLauncher {
         // Run the texture packer to create the UI sprite texture atlas
         TexturePacker.Settings settings = new TexturePacker.Settings();
         settings.atlasExtension = ".pack";
-        TexturePacker.process(settings, "../../images/ui", "./ui/", "ui");
+
+        TexturePacker.process(settings, "../../images/uiInGame", "./ui/uiInGame", "uiInGame");
+        TexturePacker.process(settings, "../../images/uiInterlude", "./ui/uiInterlude", "uiInterlude");
+        TexturePacker.process(settings, "../../images/uiLevelSelect", "./ui/uiLevelSelect", "uiLevelSelect");
+        TexturePacker.process(settings, "../../images/uiTitle", "./ui/uiTitle", "uiTitle");
 
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Lincoln Imp: A Smashing Adventure";

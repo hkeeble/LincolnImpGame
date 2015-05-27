@@ -1,0 +1,41 @@
+
+uiLevelSelect.png
+size: 1024,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cathedralFloorButton
+  rotate: false
+  xy: 2, 2
+  size: 421, 107
+  orig: 421, 107
+  offset: 0, 0
+  index: -1
+cathedralFloorButtonSelected
+  rotate: false
+  xy: 425, 2
+  size: 421, 107
+  orig: 421, 107
+  offset: 0, 0
+  index: -1
+debugButton
+  rotate: false
+  xy: 848, 11
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+exitButton
+  rotate: false
+  xy: 848, 45
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+playButton
+  rotate: false
+  xy: 914, 45
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1

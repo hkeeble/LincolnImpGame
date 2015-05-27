@@ -27,9 +27,12 @@ public class LevelInterludeTable extends Table {
 
         LevelSaveData data = saveGame.getLastPlayedLevelData();
 
-        Label titleLabel = HUD.makeLabel(0, 0, Color.BLACK, "FLOOR COMPLETE!", titleFont);
-        Label scoreLabel = HUD.makeLabel(0, 0, Color.BLACK, "Score: " + data.getScore(), mainFont);
-        Label destroyedLabel = HUD.makeLabel(0, 0, Color.BLACK, "Stuff Destroyed: " + String.valueOf(data.getObjectsDestroyed()) + "/" + String.valueOf(data.getPotentialObjects()), mainFont);
+        Label.LabelStyle titleStyle = new Label.LabelStyle(titleFont, Color.BLACK);
+        Label.LabelStyle mainStyle = new Label.LabelStyle(mainFont, Color.BLACK);
+
+        Label titleLabel = HUD.makeLabel(0, 0, "FLOOR COMPLETE!", titleStyle);
+        Label scoreLabel = HUD.makeLabel(0, 0, "Score: " + data.getScore(), mainStyle);
+        Label destroyedLabel = HUD.makeLabel(0, 0, "Stuff Destroyed: " + String.valueOf(data.getObjectsDestroyed()) + "/" + String.valueOf(data.getPotentialObjects()), mainStyle);
 
         Button replayButton = HUD.makeButton(0, 0, replayListener, uiSkin.getDrawable("replayButton"), uiSkin.getDrawable("replayButton"), uiSkin.getDrawable("replayButton"));
         Button playButton = HUD.makeButton(0, 0, continueListener, uiSkin.getDrawable("playButton"), uiSkin.getDrawable("playButton"), uiSkin.getDrawable("playButton"));

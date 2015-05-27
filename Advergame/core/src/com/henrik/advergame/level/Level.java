@@ -291,8 +291,8 @@ public class Level {
         this.wall4Texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
 
         // Get sounds
-        doorOpen = assetManager.get("sounds/hit2.wav", Sound.class);
-        destroy = assetManager.get("sounds/destroy.wav", Sound.class);
+        doorOpen = assetManager.get("sounds/hit2.mp3", Sound.class);
+        destroy = assetManager.get("sounds/destroy.mp3", Sound.class);
 
         this.messageFont = messageFont;
     }
@@ -347,6 +347,10 @@ public class Level {
         this.chunkCount = chunkHeight + chunkWidth;
 
         build(world.getRenderer());
+
+        for (int i = 0; i < 10; i++) {
+            System.gc();
+        }// Hint a GC here!
     }
 
     /**
@@ -414,7 +418,7 @@ public class Level {
                     wayPoints.add(new Point(p.x * cellSize, p.y * cellSize));
                 }
 
-                dynamicEntities.add(new AngelDog(assetManager, initialPos, wayPoints, renderer));
+                dynamicEntities.add(new AngelDog(assetManager, Game.getUISkin(), initialPos, wayPoints, renderer));
             } else if(entity.getId() == MapEntityState.DOOR.getID()) {
                 if(grid[entity.getLocation().x + 1][entity.getLocation().y] != TileState.FLOOR && grid[entity.getLocation().x - 1][entity.getLocation().y] != TileState.FLOOR) {
                     staticEntities.add(new Door(initialPos, downDoorModelLock, true));

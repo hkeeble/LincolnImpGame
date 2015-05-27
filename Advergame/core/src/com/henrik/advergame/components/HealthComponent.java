@@ -33,6 +33,8 @@ public class HealthComponent extends DecalGraphicsComponent {
     private long cooldownTime; // Cooldown time between being hit, in milliseconds
     private long timeAtLastDamage;
 
+    private Pixmap pixmap;
+
     /**
      *
      * @param maxHealth The maximum health for this health component.
@@ -47,6 +49,7 @@ public class HealthComponent extends DecalGraphicsComponent {
         health = maxHealth;
         currentImageHealth = maxHealth;
 
+        pixmap = new Pixmap((blockSize*maxHealth) + (BORDER_SIZE*2), blockSize + (BORDER_SIZE*2), Pixmap.Format.RGBA8888);
         currentTexture = new Texture(buildHealthBar());
         decal = Decal.newDecal(2, 0.5f, new TextureRegion(currentTexture), true);
 
@@ -97,8 +100,6 @@ public class HealthComponent extends DecalGraphicsComponent {
     }
 
     private Pixmap buildHealthBar() {
-        Pixmap pixmap = new Pixmap((blockSize*maxHealth) + (BORDER_SIZE*2), blockSize + (BORDER_SIZE*2), Pixmap.Format.RGBA8888);
-
         // Build base bar
         for(int x = 0; x < pixmap.getWidth(); x++) {
             for(int y = 0; y < pixmap.getHeight(); y++) {
@@ -127,6 +128,7 @@ public class HealthComponent extends DecalGraphicsComponent {
 
     public void update() {
         if(health != currentImageHealth) {
+            currentTexture.dispose();
             currentTexture = new Texture(buildHealthBar());
             decal.setTextureRegion(new TextureRegion(currentTexture));
             currentImageHealth = health;

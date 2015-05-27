@@ -33,7 +33,7 @@ public class IntroTable extends Table {
 
     public IntroTable(BitmapFont font, Skin uiSkin, EventListener playListener) {
 
-        text = HUD.makeLabel(0, 0, Color.BLACK, pages[currentPage], font);
+        text = HUD.makeLabel(0, 0, pages[currentPage], new Label.LabelStyle(font, Color.BLACK));
 
         playButton = HUD.makeButton(0, 0, playListener, uiSkin.getDrawable("playButton"), uiSkin.getDrawable("playButton"), uiSkin.getDrawable("playButton"));
 

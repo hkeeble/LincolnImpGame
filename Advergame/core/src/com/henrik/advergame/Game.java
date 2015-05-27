@@ -2,12 +2,15 @@ package com.henrik.advergame;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.physics.bullet.Bullet;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.henrik.SaveGameSerializer;
 import com.henrik.advergame.states.*;
@@ -18,22 +21,23 @@ import java.util.*;
 
 public class Game extends GameBase implements ApplicationListener {
 
+    public enum FontSize {
+        LARGE,
+        SMALL
+    }
+
     private GameState inGame, gameOver, intro, levelSelect, levelInterlude, titleScreen, credits, endGame;
 
-    public final int FONT_COUNT = 10;
-    public final int[] FONT_SIZES = new int[] { 3, 2, 7, 6, 5, 4, 1};
-    public final int FONT_SIZE_INCREMENT = 12;
-
     public static final int LEVEL_COUNT = 14;
-
-    private ArrayList<FreeTypeFontGenerator.FreeTypeFontParameter> fontParamList;
 
     private SaveGame saveGame;
 
     // UI Atlas and Skin
     private static Skin uiSkin;
     private static TextureAtlas uiAtlas;
-    
+
+    private static HashMap<String,BitmapFont> fonts;
+
     @Override
     public void create () {
         super.create();
@@ -42,10 +46,6 @@ public class Game extends GameBase implements ApplicationListener {
         loadGame();
 
         Bullet.init(); // Initialize bullet for collision detection
-
-        // Load the UI Atlas so it can be accessed from anywhere, and disposed of uniformly
-        uiAtlas = new TextureAtlas(Gdx.files.internal("ui/ui.pack"));
-        uiSkin = new Skin(uiAtlas);
         
         intro = new Intro(this);
         titleScreen = new TitleScreen(this);
@@ -74,15 +74,8 @@ public class Game extends GameBase implements ApplicationListener {
         loadFonts();
     }
 
-    @Override
     public void loadFonts() {
-        // Sizes
-        fontParamList = new ArrayList<FreeTypeFontGenerator.FreeTypeFontParameter>();
-        for(int i = 0; i < FONT_SIZES.length; i++) {
-            FreeTypeFontGenerator.FreeTypeFontParameter params = new FreeTypeFontGenerator.FreeTypeFontParameter();
-            params.size = 12 + (i* FONT_SIZE_INCREMENT);
-            fontParamList.add(params);
-        }
+        fonts = new HashMap<String, BitmapFont>();
 
         // Add fonts
         addFont("fonts/Minecraftia_Regular.ttf", "debug");
@@ -90,10 +83,18 @@ public class Game extends GameBase implements ApplicationListener {
     }
 
     private void addFont(String filePath, String internalName) {
+        FreeTypeFontGenerator.FreeTypeFontParameter params = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        params.size = 52;
+
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(filePath));
-        for(int i = 0; i < FONT_SIZES.length; i++) {
-            fonts.put(internalName + String.valueOf(i+1), generator.generateFont(fontParamList.get(i)));
-        }
+
+        BitmapFont base = generator.generateFont(params);
+        BitmapFont small = new BitmapFont(generator.generateData(params), base.getRegions(), true);
+
+        small.getData().setScale(0.5f);
+
+        fonts.put(internalName + String.valueOf(FontSize.LARGE), base);
+        fonts.put(internalName + String.valueOf(FontSize.SMALL), small);
     }
 
     @Override
@@ -119,7 +120,13 @@ public class Game extends GameBase implements ApplicationListener {
     @Override
     public void dispose () {
     	uiSkin.dispose();
-        fontManager.dispose();
+
+        Iterator iter = fonts.entrySet().iterator();
+        while(iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            ((BitmapFont)entry.getValue()).dispose();
+        }
+
         super.dispose();
     }
 
@@ -153,13 +160,13 @@ public class Game extends GameBase implements ApplicationListener {
         }
 
         // Unlocks all levels
-        /*
+
         for(int i = 1; i < Game.LEVEL_COUNT+1; i++) {
         	saveGame.saveLevelData(i, new LevelSaveData(i, 0, 0, 0));
         	saveGame();
         }
     	saveGame.setLevel(Game.LEVEL_COUNT);
-    	*/
+
     }
 
     /**
@@ -175,8 +182,19 @@ public class Game extends GameBase implements ApplicationListener {
     public int getPlayerLevel() {
         return saveGame.getLevel();
     }
-    
+
     public static Skin getUISkin() {
     	return uiSkin;
+    }
+
+    public static void setUiSkin(TextureAtlas atlas) {
+        if(uiSkin != null)
+            uiSkin.dispose();
+
+        uiSkin = new Skin(atlas);
+    }
+
+    public static BitmapFont getFont(String name, FontSize size) {
+        return fonts.get(name + String.valueOf(size));
     }
 }

@@ -44,6 +44,10 @@ public class GameStateCollection {
                 states.get(i).clear();
             }
         }
+
+        for (int i = 0; i < 10; i++) {
+            System.gc();
+        } // Hint, this is a good time to garbage collect!
     }
 
     public void update() {

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.bullet.collision.btBoxShape;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.henrik.advergame.AnimationFactory;
 import com.henrik.advergame.Game;
@@ -36,8 +37,7 @@ public class AngelDog extends LevelEntity {
     private final static String[] MESSAGE_STRINGS = { "*woof*", "*arf*", "*woof! woof!*", "*arf! arf!*", "*woof?*", "*ARF!*", "*WOOF!*", "*arf?*"};
     
     // Load static texture and font
-    private static BitmapFont messageFont = Game.getFont("main", 3);
-    private static TextureRegion messageBackground = Game.getUISkin().getRegion("speechBubble");
+    private static BitmapFont messageFont = Game.getFont("main", Game.FontSize.SMALL);
     
     // Timed Messages are static, as they must render to texture to create them
     private TimedMessage[] timedMessages;
@@ -48,18 +48,18 @@ public class AngelDog extends LevelEntity {
     private final long MIN_MILLIS_TO_NEXT_MESSAGE = 2500;
     private final long MAX_MILLITS_TO_NEXT_MESSAGE = 5500;
 
-    public AngelDog(AssetManager assetManager, Vector3 initialPos, ArrayList<Point> wayPoints, Renderer renderer) {
+    public AngelDog(AssetManager assetManager, Skin uiSkin, Vector3 initialPos, ArrayList<Point> wayPoints, Renderer renderer) {
         super(new PhysicsComponent(new btBoxShape(new Vector3(0.6f, 1.5f, 0.4f)), CollisionTags.ANGEL_DOG));
 
         timedMessages = new TimedMessage[] {
-                    new TimedMessage(MESSAGE_STRINGS[0], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
-                    new TimedMessage(MESSAGE_STRINGS[1], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
-                    new TimedMessage(MESSAGE_STRINGS[2], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
-                    new TimedMessage(MESSAGE_STRINGS[3], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
-                    new TimedMessage(MESSAGE_STRINGS[4], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
-                    new TimedMessage(MESSAGE_STRINGS[5], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
-                    new TimedMessage(MESSAGE_STRINGS[6], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this),
-                    new TimedMessage(MESSAGE_STRINGS[7], messageFont, Color.BLACK, messageBackground, 1500, new Vector3(0, 0, 0), renderer, this)
+                    new TimedMessage(MESSAGE_STRINGS[0], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[1], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[2], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[3], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[4], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[5], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[6], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this),
+                    new TimedMessage(MESSAGE_STRINGS[7], messageFont, Color.BLACK, uiSkin.getRegion("speechBubble"), 1500, new Vector3(0, 0, 0), renderer, this)
         };
 
         controllerComponent = new AngelDogController(initialPos, wayPoints);

@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.hud.TitleHUD;
 import com.henrik.advergame.hud.tables.IntroTable;
@@ -26,7 +28,7 @@ public class Intro extends GameState {
     private class PlayListener extends ClickListener {
         @Override
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             introTable.advancePage();
 
@@ -45,19 +47,28 @@ public class Intro extends GameState {
 
         setLoadState(new LoadingScreen(assetManager, game.hud));
 
-        addAsset("ui/ui.pack", TextureAtlas.class);
-        addAsset("sounds/select.wav", Sound.class);
+        addAsset("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class);
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("sounds/titleMusic.mp3", Sound.class);
+        addAsset("textures/titleScreen.png", Texture.class);
     }
 
     @Override
     protected void initialize() {
+        Game.setUiSkin(assetManager.get("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class));
 
-        introTable = new IntroTable(Game.getFont("main", 3), Game.getUISkin(), new PlayListener());
 
-        game.hud.getMainTable().setBackground(Game.getUISkin().getDrawable("titleScreen"));
+        introTable = new IntroTable(((Game) game).getFont("main", Game.FontSize.SMALL), Game.getUISkin(), new PlayListener());
+
+        game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/titleScreen.png", Texture.class))));
         game.hud.getMainTable().add(introTable);
 
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
+        music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+
+        }
         music.loop();
     }
 
@@ -74,16 +85,11 @@ public class Intro extends GameState {
 
     @Override
     protected void dispose() {
-        if(music != null)
-            music.dispose();
         super.dispose();
     }
 
     @Override
     protected void clear() {
-
-        if(music != null)
-            music.dispose();
         super.clear();
     }
 }

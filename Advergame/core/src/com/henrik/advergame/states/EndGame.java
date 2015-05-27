@@ -2,11 +2,14 @@ package com.henrik.advergame.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.hud.tables.EndGameFinalTable;
 import com.henrik.advergame.hud.tables.EndGameMessageTable;
@@ -27,7 +30,7 @@ public class EndGame extends GameState {
     private class AdvanceListener extends ClickListener {
         @Override
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             msgTable.advancePage();
 
@@ -51,7 +54,7 @@ public class EndGame extends GameState {
     private class ExitListener extends ClickListener {
         @Override
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             music.stop();
 
@@ -68,31 +71,40 @@ public class EndGame extends GameState {
 
         setLoadState(new LoadingScreen(assetManager, game.hud));
 
-        addAsset("ui/ui.pack", TextureAtlas.class);
-        addAsset("sounds/select.wav", Sound.class);
+        addAsset("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class);
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("sounds/titleMusic.mp3", Sound.class);
+
+        addAsset("textures/endScreen1.png", Texture.class);
+        addAsset("textures/endScreen2.png", Texture.class);
+
     }
 
     @Override
     protected void initialize() {
+        Game.setUiSkin(assetManager.get("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class));
 
-        endScreen1 = Game.getUISkin().getDrawable("endScreen1");
-        endScreen2 = Game.getUISkin().getDrawable("endScreen2");
+        endScreen1 = new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/endScreen1.png", Texture.class)));
+        endScreen2 = new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/endScreen2.png", Texture.class)));
 
-        msgTable = new EndGameMessageTable(Game.getFont("main", 3), Game.getUISkin(), new AdvanceListener());
-        finalTable = new EndGameFinalTable(Game.getFont("main", 5), Game.getFont("main", 4), Game.getUISkin(), ((Game)game).getSaveGame(), new ExitListener());
+        msgTable = new EndGameMessageTable(((Game) game).getFont("main", Game.FontSize.LARGE), Game.getUISkin(), new AdvanceListener());
+        finalTable = new EndGameFinalTable(((Game) game).getFont("main", Game.FontSize.LARGE), ((Game) game).getFont("main", Game.FontSize.LARGE), Game.getUISkin(), ((Game)game).getSaveGame(), new ExitListener());
 
         game.hud.getMainTable().setBackground(endScreen1);
         game.hud.getMainTable().add(msgTable).padTop(400f);
 
+        music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
 
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
+        }
         music.loop();
     }
 
     @Override
     public void render() {
         super.render();
-
     }
 
     @Override
@@ -102,15 +114,11 @@ public class EndGame extends GameState {
 
     @Override
     protected void dispose() {
-        if(music != null)
-            music.dispose();
         super.dispose();
     }
 
     @Override
     protected void clear() {
-        if(music != null)
-            music.dispose();
         super.clear();
     }
 

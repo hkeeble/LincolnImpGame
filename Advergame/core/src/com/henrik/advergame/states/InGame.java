@@ -125,7 +125,7 @@ public class InGame extends GameState {
         addAsset("sprites/fire_ball_up.png", Texture.class);
         addAsset("sprites/dog.png", Texture.class);
 
-        addAsset("ui/ui.pack", TextureAtlas.class);
+        addAsset("ui/uiInGame/uiInGame.pack", TextureAtlas.class);
 
         addAsset("sounds/select.mp3", Sound.class);
         addAsset("sounds/talk.mp3", Sound.class);
@@ -143,6 +143,8 @@ public class InGame extends GameState {
 
     @Override
     public void initialize() {
+        Game.setUiSkin(assetManager.get("ui/uiInGame/uiInGame.pack", TextureAtlas.class));
+
 
         // Initialize the Debug HUD
         initDebugHUD();
@@ -162,7 +164,7 @@ public class InGame extends GameState {
     private void initDebugHUD() {
         if(Game.DEBUG_ACTIVE) {
 
-            BitmapFont font = Game.getFont("debug", 1);
+            BitmapFont font = ((Game) game).getFont("main", Game.FontSize.LARGE);
 
             dbgHud = new DebugTable(font, Game.getUISkin(), new RegenerateLevel(), new EnableGLProfileEvent(), new EnableCollisionDebug(), new EnableNavDebug(), new ToggleDebugCamera());
             game.hud.addActor(dbgHud);

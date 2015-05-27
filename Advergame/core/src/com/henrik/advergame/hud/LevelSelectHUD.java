@@ -2,9 +2,11 @@ package com.henrik.advergame.hud;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.henrik.advergame.Game;
@@ -41,16 +43,19 @@ public class LevelSelectHUD extends Table {
 
         levelTables = new ArrayList<Table>();
 
+        Label levelLabel;
+        Label.LabelStyle redStyle = new Label.LabelStyle(((Game) game).getFont("main", Game.FontSize.SMALL), Color.RED);
+        Label.LabelStyle grayStyle = new Label.LabelStyle(((Game) game).getFont("main", Game.FontSize.SMALL), Color.GRAY);
+
         for(int i = 0; i < levelCount; i++) {
 
             Table table = new Table();
             table.setBackground(Game.getUISkin().getDrawable("cathedralFloorButton"));
 
-            Label levelLabel;
             if(!(i <= saveGame.getLevel()-1)) {
-                levelLabel = HUD.makeLabel(0, 0, Color.GRAY, "Level " + String.valueOf(i+1), Game.getFont("main", 3));
+                levelLabel = HUD.makeLabel(0, 0, "Level " + String.valueOf(i+1), grayStyle);
             } else {
-                levelLabel = HUD.makeLabel(0, 0, Color.RED, "Level " + String.valueOf(i+1), Game.getFont("main", 3));
+                levelLabel = HUD.makeLabel(0, 0, "Level " + String.valueOf(i+1), redStyle);
             }
             levelLabel.setAlignment(Align.center);
 
@@ -59,8 +64,8 @@ public class LevelSelectHUD extends Table {
             if(i <= saveGame.getLevel()-1) {
                 LevelSaveData data = saveGame.getLevelSaveData(i+1);
 
-                Label objLabel = HUD.makeLabel(0, 0, Color.RED, "Objects Found: " + String.valueOf(data.getObjectsDestroyed()) + "/" +
-                        String.valueOf(Level.GetObjectCount(String.valueOf(i+1))), Game.getFont("main", 2));
+                Label objLabel = HUD.makeLabel(0, 0, "Objects Found: " + String.valueOf(data.getObjectsDestroyed()) + "/" +
+                        String.valueOf(Level.GetObjectCount(String.valueOf(i+1))), redStyle);
 
                 objLabel.setAlignment(Align.center);
                 if (i == saveGame.getLevel()) {
@@ -82,7 +87,7 @@ public class LevelSelectHUD extends Table {
         scrollPane = new ScrollPane(levelTable);
 
         ScrollPane.ScrollPaneStyle style = new ScrollPane.ScrollPaneStyle();
-        style.background = Game.getUISkin().getDrawable("cathedralTower");
+        style.background = new TextureRegionDrawable(new TextureRegion( game.getAssetManager().get("textures/cathedralTower.png", Texture.class)));
 
         scrollPane.setStyle(style);
         scrollPane.setScrollingDisabled(true, false);

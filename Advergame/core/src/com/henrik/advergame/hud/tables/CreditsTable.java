@@ -19,13 +19,17 @@ public class CreditsTable extends Table {
 
         exitButton = HUD.makeButton(0, 0, exitListener, uiSkin.getDrawable("exitButton"), uiSkin.getDrawable("exitButton"), uiSkin.getDrawable("exitButton"));
 
-        programmerTitle = HUD.makeLabel(0, 0, Color.GRAY, "Programming", smallFont);
-        artTitle = HUD.makeLabel(0, 0, Color.GRAY, "Art", smallFont);
-        soundTitle = HUD.makeLabel(0, 0, Color.GRAY, "Audio", smallFont);
+        Label.LabelStyle grayStyle = new Label.LabelStyle(smallFont, Color.GRAY);
+        Label.LabelStyle blackStyle = new Label.LabelStyle(largeFont, Color.BLACK);
 
-        programmer = HUD.makeLabel(0, 0, Color.BLACK, "Henri Keeble", largeFont);
-        art = HUD.makeLabel(0, 0, Color.BLACK, "Brooke Hayes", largeFont);
-        sound = HUD.makeLabel(0, 0, Color.BLACK, "PlayOnLoop.com", largeFont);
+
+        programmerTitle = HUD.makeLabel(0, 0, "Programming", grayStyle);
+        artTitle = HUD.makeLabel(0, 0, "Art", grayStyle);
+        soundTitle = HUD.makeLabel(0, 0, "Audio", grayStyle);
+
+        programmer = HUD.makeLabel(0, 0, "Henri Keeble", blackStyle);
+        art = HUD.makeLabel(0, 0, "Brooke Hayes", blackStyle);
+        sound = HUD.makeLabel(0, 0, "PlayOnLoop.com", blackStyle);
 
         setBackground(uiSkin.getDrawable("uiBackground"));
 

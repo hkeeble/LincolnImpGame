@@ -17,8 +17,10 @@ public class TitleDataTable extends Table {
 
     public TitleDataTable(BitmapFont font, SaveGame saveGame, Skin uiSkin) {
 
-        totalScore = HUD.makeLabel(0, 0, Color.BLACK, "Total Score: " + String.valueOf(saveGame.getTotalScore()), font);
-        totalObjects = HUD.makeLabel(0, 0, Color.BLACK, "Total Objects Destroyed: " + String.valueOf(saveGame.getTotalObjectsDestroyed()), font);
+        Label.LabelStyle style = new Label.LabelStyle(font, Color.BLACK);
+
+        totalScore = HUD.makeLabel(0, 0, "Total Score: " + String.valueOf(saveGame.getTotalScore()), style);
+        totalObjects = HUD.makeLabel(0, 0, "Total Objects Destroyed: " + String.valueOf(saveGame.getTotalObjectsDestroyed()), style);
 
         setBackground(uiSkin.getDrawable("uiBackground"));
 

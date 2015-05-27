@@ -121,10 +121,10 @@ public class GameWorld extends World {
         messageSequenceActive = false;
 
         // Initialize the HUD
-        hudManager = new HUDManager(game, this, assetManager.get("sounds/select.wav", Sound.class));
+        hudManager = new HUDManager(game, this, assetManager.get("sounds/select.mp3", Sound.class));
         hudManager.enableMainHUD();
 
-        firstLevelMessageSequence = new MessageSequence(firstLevelMsgSequence, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), renderer);
+        firstLevelMessageSequence = new MessageSequence(firstLevelMsgSequence, ((Game) game).getFont("main", Game.FontSize.SMALL), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), renderer);
     }
 
     /**
@@ -140,7 +140,7 @@ public class GameWorld extends World {
 
         reset();
 
-        currentLevel = new Level(String.valueOf(level), 2, assetManager, game.getFont("main", 3), this);
+        currentLevel = new Level(String.valueOf(level), 2, assetManager, ((Game) game).getFont("main", Game.FontSize.SMALL), this);
 
         // Set player position
         player.setPosition(currentLevel.getPlayerStart().x * currentLevel.getCellSize(), 0, currentLevel.getPlayerStart().y * currentLevel.getCellSize());
@@ -378,7 +378,7 @@ public class GameWorld extends World {
      * Adds a message to the world.
      */
     public void addMessage(String text, long millisToShow, Vector3 position) {
-        timedMessages.add(new TimedMessage(text, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, position, renderer));
+        timedMessages.add(new TimedMessage(text, ((Game) game).getFont("main", Game.FontSize.SMALL), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, position, renderer));
         timedMessages.get(timedMessages.size() - 1).show();
     }
 
@@ -386,7 +386,7 @@ public class GameWorld extends World {
      * Adds a message to the world. The message will follow the given game object.
      */
     public void addMessage(String text, long millisToShow, GameObject source) {
-        TimedMessage message = new TimedMessage(text, Game.getFont("main", 3), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, source.getPosition(), renderer, source);
+        TimedMessage message = new TimedMessage(text, ((Game) game).getFont("main", Game.FontSize.SMALL), Color.BLACK, Game.getUISkin().getRegion("speechBubble"), millisToShow, source.getPosition(), renderer, source);
         timedMessages.add(message);
         message.show();
     }

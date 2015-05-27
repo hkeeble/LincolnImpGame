@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.bullet.collision.btBoxShape;
+import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.entities.AnimatedDecalObject;
@@ -33,11 +34,19 @@ public class Cannon extends LevelEntity {
 
     private AnimatedDecalGraphicsComponent graphicsComponent;
     private Point fireDirection;
+
     private ArrayList<CannonBall> cannonBalls;
-    private ArrayList<AnimatedDecalObject> explosions;
+    private final Pool<CannonBall> bulletPool = new Pool<CannonBall>() {
+        @Override
+        protected CannonBall newObject() {
+            return new CannonBall();
+        }
+    };
+
     private Animation explosionAnimation;
 
     private Texture cannonballTexture;
+    private Vector3 direction;
 
     public Cannon(Vector3 position, Point fireDirection, AssetManager assetManager) {
         super(new PhysicsComponent(new btBoxShape(new Vector3(0.6f, 1.5f, 0.4f)), CollisionTags.CANNON));
@@ -68,7 +77,7 @@ public class Cannon extends LevelEntity {
         explosionAnimation = AnimationUtils.createAnimation(assetManager.get("sprites/explosion.png", Texture.class), 64, 64, 0.05f, Animation.PlayMode.NORMAL);
 
         cannonBalls = new ArrayList<CannonBall>();
-        explosions = new ArrayList<AnimatedDecalObject>();
+        direction = new Vector3();
     }
 
     @Override
@@ -77,8 +86,12 @@ public class Cannon extends LevelEntity {
 
         // Check for countdown to add new cannonball
         if(graphicsComponent.isAnimationFinished()) {
-            cannonBalls.add(new CannonBall(cannonballTexture, this.getPosition(), new Vector3(fireDirection.x, 0, fireDirection.y)));
-            world.registerDynamicEntity(cannonBalls.get(cannonBalls.size()-1).getPhysicsComponent(), cannonBalls.get(cannonBalls.size()-1));
+            CannonBall ball = bulletPool.obtain();
+            direction.set(fireDirection.x, 0, fireDirection.y);
+            ball.init(cannonballTexture, this.getPosition(), direction);
+            cannonBalls.add(ball);
+
+            world.registerDynamicEntity(ball.getPhysicsComponent(), ball);
             graphicsComponent.reset();
             graphicsComponent.start();
         }
@@ -87,29 +100,16 @@ public class Cannon extends LevelEntity {
             cannonBall.update(world);
         }
 
-        for(AnimatedDecalObject explosion : explosions) {
-            explosion.update(world);
-        }
-
-        for(int i = 0; i < explosions.size(); i++) {
-            if(explosions.get(i).getGraphicsComponent().isAnimationFinished()) {
-                explosions.remove(i);
-            }
-        }
-
         // Check for removals
         for(int i = 0; i < cannonBalls.size(); i++) {
             if(cannonBalls.get(i).isMarkedForRemoval()) {
 
-                // Add explosion
-                explosions.add(new AnimatedDecalObject(new AnimatedDecalGraphicsComponent(2f, 2f, explosionAnimation)));
-                explosions.get(explosions.size()-1).getGraphicsComponent().start();
-                explosions.get(explosions.size()-1).setPosition(cannonBalls.get(i).getPosition());
+                CannonBall ball = cannonBalls.get(i);
 
                 // Remove cannonball
-                world.unregisterCollisionObject(cannonBalls.get(i).getPhysicsComponent());
-                cannonBalls.get(i).dispose();
-                cannonBalls.remove(cannonBalls.get(i));
+                world.unregisterCollisionObject(ball.getPhysicsComponent());
+                cannonBalls.remove(ball);
+                bulletPool.free(ball);
             }
         }
     }
@@ -123,15 +123,17 @@ public class Cannon extends LevelEntity {
         for(CannonBall cannonBall : cannonBalls) {
             cannonBall.render(world);
         }
-
-        for(AnimatedDecalObject explosion : explosions) {
-            explosion.render(world);
-        }
     }
 
     @Override
     public void dispose() {
         for(CannonBall ball : cannonBalls) {
+            ball.dispose();
+        }
+
+        int count = bulletPool.getFree();
+        for(int i = 0; i < count; i++) {
+            CannonBall ball = bulletPool.obtain();
             ball.dispose();
         }
     }

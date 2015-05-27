@@ -22,8 +22,8 @@ public class InputHandler extends InputAdapter {
         private boolean touched;
 
         public TouchData() {
-            position = Vector2.Zero;
-            dragDistance = Vector2.Zero;
+            position = new Vector2();
+            dragDistance = new Vector2();
             touched = false;
         }
 
@@ -31,8 +31,8 @@ public class InputHandler extends InputAdapter {
         public Vector2 getDragDistance() { return dragDistance; }
         public boolean isTouched() { return touched; }
 
-        public void setPosition(Vector2 position) { this.position = position; }
-        public void setDragDistance(Vector2 distance) { this.dragDistance = distance; }
+        public void setPosition(float x, float y) { this.position.set(x, y); }
+        public void setDragDistance(float x, float y) { this.dragDistance.set(x, y); }
         public void setTouched(boolean touched) {this.touched = touched; }
     }
 
@@ -69,7 +69,7 @@ public class InputHandler extends InputAdapter {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if(pointer < MAX_POINTERS) {
-            touchData.get(pointer).setPosition(new Vector2(screenX, screenY));
+            touchData.get(pointer).setPosition(screenX, screenY);
             touchData.get(pointer).setTouched(true);
             mostRecentPointer = pointer;
         }
@@ -80,7 +80,7 @@ public class InputHandler extends InputAdapter {
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         if(pointer < MAX_POINTERS) {
-            touchData.get(pointer).setPosition(new Vector2(screenX, screenY));
+            touchData.get(pointer).setPosition(screenX, screenY);
             touchData.get(pointer).setTouched(false);
         }
         return false;
@@ -91,8 +91,7 @@ public class InputHandler extends InputAdapter {
 
         if(pointer < MAX_POINTERS) {
             Vector2 initialPos = touchData.get(pointer).getPosition();
-            Vector2 dragDist = new Vector2(screenX - initialPos.x, screenY - initialPos.y);
-            touchData.get(pointer).setDragDistance(dragDist);
+            touchData.get(pointer).setDragDistance(screenX - initialPos.x, screenY - initialPos.y);
         }
 
         return false;

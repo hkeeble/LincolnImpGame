@@ -1,0 +1,83 @@
+
+uiInGame.png
+size: 512,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+debugButton
+  rotate: false
+  xy: 2, 2
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+exitButton
+  rotate: false
+  xy: 2, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+hitButton
+  rotate: false
+  xy: 260, 252
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+pauseButton
+  rotate: false
+  xy: 390, 316
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+pauseOverlay
+  rotate: false
+  xy: 2, 229
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+playButton
+  rotate: false
+  xy: 68, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+replayButton
+  rotate: false
+  xy: 390, 250
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+speechBubble
+  rotate: false
+  xy: 2, 102
+  size: 245, 125
+  orig: 245, 125
+  offset: 0, 0
+  index: -1
+touchBackground
+  rotate: false
+  xy: 507, 482
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+touchKnob
+  rotate: false
+  xy: 260, 122
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+uiBackground
+  rotate: false
+  xy: 260, 382
+  size: 245, 103
+  orig: 245, 103
+  offset: 0, 0
+  index: -1

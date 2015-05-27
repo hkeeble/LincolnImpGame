@@ -26,10 +26,12 @@ public class InGameDataTable extends Table {
     public InGameDataTable(BitmapFont font) {
         super();
 
-        score = HUD.makeLabel(0, 0, Color.BLACK, "Score: ", font);
+        Label.LabelStyle style = new Label.LabelStyle(font, Color.BLACK);
+
+        score = HUD.makeLabel(0, 0, "Score: ", style);
 
         currentKeyCount = 0;
-        keys = HUD.makeLabel(0, 0, Color.BLACK, "Keys: ", font);
+        keys = HUD.makeLabel(0, 0, "Keys: ", style);
 
         top().left();
         add(score).align(Align.left).width(170).padRight(10f).padLeft(20f);

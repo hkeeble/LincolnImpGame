@@ -30,13 +30,15 @@ public class DebugHUD extends Table {
     public DebugHUD(BitmapFont font, EventListener regenerateEventListener, EventListener glToggleEvent, EventListener collisionToggleEvent, EventListener navmeshToggleEvent,
                     EventListener debugCamEventListener, EventListener pauseListener) {
 
+        Label.LabelStyle style = new Label.LabelStyle(font, Color.RED);
+
         // Create HUD labels
-        fpsLabel             = HUD.makeLabel(0, 0, Color.RED, "FPS: ", font);
-        glCallLabel          = HUD.makeLabel(0, 0, Color.RED, "GL Calls: ", font);
-        glDrawCallLabel      = HUD.makeLabel(0, 0, Color.RED, "GL_Draw Calls: ", font);
-        glShaderSwitchLabel  = HUD.makeLabel(0, 0, Color.RED, "GL Shader Switches: ", font);
-        glTextureBindLabel   = HUD.makeLabel(0, 0, Color.RED, "GL_Texture Binds: ", font);
-        glVertexCountLabel   = HUD.makeLabel(0, 0, Color.RED, "GL Vertex Count: ", font);
+        fpsLabel             = HUD.makeLabel(0, 0,"FPS: ", style);
+        glCallLabel          = HUD.makeLabel(0, 0, "GL Calls: ", style);
+        glDrawCallLabel      = HUD.makeLabel(0, 0, "GL_Draw Calls: ", style);
+        glShaderSwitchLabel  = HUD.makeLabel(0, 0, "GL Shader Switches: ", style);
+        glTextureBindLabel   = HUD.makeLabel(0, 0, "GL_Texture Binds: ", style);
+        glVertexCountLabel   = HUD.makeLabel(0, 0, "GL Vertex Count: ", style);
 
         // Create HUD buttons
         enableGLButton = HUD.makeTextButton(0, 0, "Toggle GL Profiling", glToggleEvent, Game.getUISkin().getDrawable("debugButton"), Game.getUISkin().getDrawable("debugButton"),

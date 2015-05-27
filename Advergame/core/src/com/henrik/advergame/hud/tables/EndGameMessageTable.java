@@ -30,7 +30,8 @@ public class EndGameMessageTable extends Table {
 
     public EndGameMessageTable(BitmapFont font, Skin uiSkin, EventListener playListener) {
 
-        text = HUD.makeLabel(0, 0, Color.BLACK, pages[currentPage], font);
+
+        text = HUD.makeLabel(0, 0, pages[currentPage], new Label.LabelStyle(font, Color.BLACK));
 
         text.setAlignment(Align.center);
 

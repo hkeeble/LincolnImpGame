@@ -30,9 +30,9 @@ public class TitleScreen extends GameState {
     {
         @Override
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-           // music.stop();
+           music.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             if(((Game)game).getSaveGame().getLevel() == 1) {
                 game.enableState(Intro.class);
@@ -51,7 +51,7 @@ public class TitleScreen extends GameState {
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
             music.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             game.enableState(LevelSelect.class);
             return super.touchDown(event, x, y, pointer, button);
@@ -64,7 +64,7 @@ public class TitleScreen extends GameState {
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
             music.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             game.enableState(Credits.class);
             return super.touchDown(event, x, y, pointer, button);
@@ -76,20 +76,23 @@ public class TitleScreen extends GameState {
 
         setLoadState(new LoadingScreen(assetManager, game.hud));
 
-        addAsset("ui/ui.pack", TextureAtlas.class);
+        addAsset("ui/uiTitle/uiTitle.pack", TextureAtlas.class);
         addAsset("textures/titleScreen.png", Texture.class);
 
-        addAsset("sounds/select.wav", Sound.class);
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("sounds/titleMusic.mp3", Sound.class);
     }
 
     @Override
     protected void initialize() {
 
+        Game.setUiSkin(assetManager.get("ui/uiTitle/uiTitle.pack", TextureAtlas.class));
+
         boolean firstTimePlay = ((Game)game).getSaveGame().getLevel() == 1;
 
-        dataTable = new TitleDataTable(Game.getFont("main", 2), ((Game) game).getSaveGame(), Game.getUISkin());
+        dataTable = new TitleDataTable(((Game) game).getFont("main", Game.FontSize.SMALL), ((Game) game).getSaveGame(), Game.getUISkin());
 
-        titleHUD = new TitleHUD(Game.getFont("main", 3), new ContinueListener(), new LevelSelectListener(), new CreditsListener(), firstTimePlay);
+        titleHUD = new TitleHUD(((Game) game).getFont("main", Game.FontSize.SMALL), new ContinueListener(), new LevelSelectListener(), new CreditsListener(), firstTimePlay);
         titleHUD.setWidth(HUD.WIDTH/3);
 
         game.hud.addActor(dataTable);
@@ -99,8 +102,15 @@ public class TitleScreen extends GameState {
         game.hud.getMainTable().add(dataTable);
         game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/titleScreen.png", Texture.class))));
 
-         music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
-       // music.loop();
+        music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
+
+        // Ugly, but no way to know if the sound is ready...
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+
+        }
+        music.loop();
     }
 
     @Override
@@ -114,19 +124,20 @@ public class TitleScreen extends GameState {
 
     @Override
     public void update() {
+        if(!isLoading()) {
+
+        }
         super.update();
     }
 
     @Override
     protected void dispose() {
         super.dispose();
-        //music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-        //music.dispose();
         super.clear();
     }
 }

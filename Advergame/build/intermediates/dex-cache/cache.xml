@@ -6,7 +6,7 @@
         jar="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\core\build\libs\core-1.0.jar"
         jumboMode="false"
         revision="21.1.0"
-        sha1="ef2f72b1cf6c72c06596354971549397b477e236"/>
+        sha1="d1e2bc1cc4f79d46c35d9c4dddef9f6bb615626b"/>
     <item
         dex="C:\Users\Henri\Documents\Projects\Advergame-development\Advergame\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.4.1-8bada6ba21be686e71f6590d7bb9dc2fe73a0cd3.jar"
         jar="C:\Users\Henri\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.4.1\eca2621f18b162c03992bd3ecc226e8a477dc6f9\gdx-backend-android-1.4.1.jar"

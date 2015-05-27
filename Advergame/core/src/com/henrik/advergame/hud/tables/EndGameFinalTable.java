@@ -25,10 +25,13 @@ public class EndGameFinalTable extends Table {
         headingTable.setBackground(uiSkin.getDrawable("uiBackground"));
         buttonTable.setBackground(uiSkin.getDrawable("uiBackground"));
 
-        Label titleLabel = HUD.makeLabel(0, 0, Color.BLACK, "GAME COMPLETE!", titleFont);
-        Label scoreLabel = HUD.makeLabel(0, 0, Color.BLACK, "Total Score: " + saveGame.getTotalScore(), mainFont);
-        Label destroyedLabel = HUD.makeLabel(0, 0, Color.BLACK, "Total\nStuff Destroyed: " + saveGame.getTotalObjectsDestroyed(), mainFont);
-        Label congratsLabel = HUD.makeLabel(0, 0, Color.BLACK, "Congratulations!", titleFont);
+        Label.LabelStyle titleStyle = new Label.LabelStyle(titleFont, Color.BLACK);
+        Label.LabelStyle mainStyle = new Label.LabelStyle(mainFont, Color.BLACK);
+
+        Label titleLabel = HUD.makeLabel(0, 0, "GAME COMPLETE!", titleStyle);
+        Label scoreLabel = HUD.makeLabel(0, 0, "Total Score: " + saveGame.getTotalScore(), mainStyle);
+        Label destroyedLabel = HUD.makeLabel(0, 0, "Total\nStuff Destroyed: " + saveGame.getTotalObjectsDestroyed(), mainStyle);
+        Label congratsLabel = HUD.makeLabel(0, 0, "Congratulations!", titleStyle);
 
         Button exitButton = HUD.makeButton(0, 0, exitListener, uiSkin.getDrawable("exitButton"), uiSkin.getDrawable("exitButton"), uiSkin.getDrawable("exitButton"));
 

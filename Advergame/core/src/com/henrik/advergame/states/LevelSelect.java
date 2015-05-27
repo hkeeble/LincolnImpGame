@@ -36,7 +36,7 @@ public class LevelSelect extends GameState {
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
             music.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             game.getState(InGame.class).setLevelState(levelSelectHUD.getCurrentlySelected()+1);
             game.enableState(InGame.class);
@@ -49,7 +49,7 @@ public class LevelSelect extends GameState {
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
             music.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             game.enableState(TitleScreen.class);
             return super.touchDown(event, x, y, pointer, button);
@@ -75,7 +75,7 @@ public class LevelSelect extends GameState {
 
             if( ((Game)game).getSaveGame().getLevel() >= Integer.parseInt(str)) {
                 levelSelectHUD.setSelected(Integer.parseInt(str)-1);
-                assetManager.get("sounds/select.wav", Sound.class).play();
+                assetManager.get("sounds/select.mp3", Sound.class).play();
             }
 
             return super.touchDown(event, x, y, pointer, button);
@@ -89,13 +89,16 @@ public class LevelSelect extends GameState {
 
         addAsset("textures/sky.png", Texture.class);
         addAsset("textures/cathedralTower.png", Texture.class);
-        addAsset("ui/ui.pack", TextureAtlas.class);
+        addAsset("ui/uiLevelSelect/uiLevelSelect.pack", TextureAtlas.class);
 
-        addAsset("sounds/select.wav", Sound.class);
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("sounds/titleMusic.mp3", Sound.class);
     }
 
     @Override
     protected void initialize() {
+
+        Game.setUiSkin(assetManager.get("ui/uiLevelSelect/uiLevelSelect.pack", TextureAtlas.class));
 
         // Create the level select scroll pane
         levelSelectHUD = new LevelSelectHUD(((Game)game), new SelectListener(), new BackListener(), new GoListener());
@@ -104,7 +107,12 @@ public class LevelSelect extends GameState {
 
         game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/sky.png", Texture.class))));
 
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
+        music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+
+        }
         music.loop();
     }
 
@@ -127,15 +135,11 @@ public class LevelSelect extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        if(music != null)
-            music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-        if(music != null)
-            music.dispose();
         super.clear();
     }
 }

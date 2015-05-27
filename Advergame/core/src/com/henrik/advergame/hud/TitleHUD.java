@@ -36,7 +36,7 @@ public class TitleHUD extends Table {
         else
             levelSelectButton = HUD.makeTextButton(0, 0, "Level Select", levelSelectListener, Game.getUISkin().getDrawable("debugButton"), Game.getUISkin().getDrawable("debugButton"), Game.getUISkin().getDrawable("debugButton"), font);
 
-        creditsButton = HUD.makeTextButton(0, 0, "Credits", creditsListener,  Game.getUISkin().getDrawable("debugButton"), Game.getUISkin().getDrawable("debugButtonPressed"), Game.getUISkin().getDrawable("debugButton"), font);
+        creditsButton = HUD.makeTextButton(0, 0, "Credits", creditsListener,  Game.getUISkin().getDrawable("debugButton"), Game.getUISkin().getDrawable("debugButton"), Game.getUISkin().getDrawable("debugButton"), font);
 
         align(Align.center);
         add(continueButton).width((float)HUD.WIDTH/2.5f).height(HUD.HEIGHT/9).padBottom(30).padTop(150);

@@ -85,8 +85,8 @@ public class HUD extends Stage {
         return button;
     }
 
-    public static Label makeLabel(float x, float y, Color color, String text, BitmapFont font) {
-        Label label = new Label(text, new Label.LabelStyle(font, color));
+    public static Label makeLabel(float x, float y, String text, Label.LabelStyle style) {
+        Label label = new Label(text, style);
         label.setPosition(x, y);
         return label;
     }

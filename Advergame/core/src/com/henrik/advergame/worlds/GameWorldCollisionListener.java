@@ -355,7 +355,8 @@ public class GameWorldCollisionListener extends ContactListener {
 
         world.playTeleportSound();
 
-        world.getPlayer().setPosition(new Vector3(teleporterObject.getPartner().getPosition()).add(2, 0, 0));
+        temp.set(teleporterObject.getPartner().getPosition()).add(2, 0, 0);
+        world.getPlayer().setPosition(temp);
 
         teleporterObject.getPhysicsComponent().setCollisionHandled(true);
 
@@ -364,13 +365,11 @@ public class GameWorldCollisionListener extends ContactListener {
     /**
      * Handle an object colliding with another static object (player or angel with wall, for example)
      */
+    private static Vector3 normal = new Vector3();
+    private static Vector3 posDelta = new Vector3();
     public void handleCollisions(CollisionObject obj0, CollisionObject obj1, btManifoldPoint cp) {
-        Vector3 normal = new Vector3(0, 0, 0);
         cp.getNormalWorldOnB(normal);
-        Vector3 posDelta = normal.scl(cp.getDistance());
-
-        CollisionTag obj0Tag = obj0.getCollisionTag();
-        CollisionTag obj1Tag = obj1.getCollisionTag();
+        posDelta.set(normal.scl(cp.getDistance()));
 
         GameObject object0 = obj0.getObject();
         GameObject object1 = obj1.getObject();
@@ -383,18 +382,16 @@ public class GameWorldCollisionListener extends ContactListener {
 
         // Object A changes
         if ((short) (flags0 & btCollisionObject.CollisionFlags.CF_STATIC_OBJECT) != btCollisionObject.CollisionFlags.CF_STATIC_OBJECT && !physicsComponent0.isKinematic()) {
-            Vector3 temp = new Vector3(), temp2 = new Vector3();
             temp.set(normal).scl(temp2.set(object0.getVelocity()).dot(normal));
             object0.getVelocity().sub(temp);
-            physicsComponent0.addCollisionChange(posDelta);
+            physicsComponent0.addCollisionChange(posDelta.x, posDelta.y, posDelta.z);
         }
 
         // Object B changes
         if((short)(flags1 & btCollisionObject.CollisionFlags.CF_STATIC_OBJECT) != btCollisionObject.CollisionFlags.CF_STATIC_OBJECT && !physicsComponent1.isKinematic()) {
-            Vector3 temp = new Vector3(), temp2 = new Vector3();
             temp.set(normal).scl(temp2.set(object1.getVelocity()).dot(normal));
             object1.getVelocity().sub(temp);
-            physicsComponent1.addCollisionChange(new Vector3(-posDelta.x, -posDelta.y, -posDelta.z));
+            physicsComponent1.addCollisionChange(-posDelta.x, -posDelta.y, -posDelta.z);
         }
     }
 

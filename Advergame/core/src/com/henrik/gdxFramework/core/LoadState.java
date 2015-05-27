@@ -36,10 +36,12 @@ public class LoadState {
     private ArrayList<String> errorAssets; // Assets that failed to loadGame
 
     private boolean done;
+    private boolean initialized;
 
     public LoadState(AssetManager assetManager, HUD hud) {
         errorListener = new ErrorListener();
         done = false;
+        initialized = false;
 
         errorAssets = new ArrayList<String>();
 
@@ -52,10 +54,7 @@ public class LoadState {
 
     public void initialize() {
         done = false;
-
-        for(int i = 0; i < assetsToLoad.size; i++) {
-            assetManager.load(assetsToLoad.get(i));
-        }
+        initialized = false;
     }
 
     public void setAssetManager(AssetManager assetManager) {
@@ -74,14 +73,15 @@ public class LoadState {
 
     public void update() {
         if(!done) {
-            if (assetManager.update()) {
+            if(!initialized) {
+                for (int i = 0; i < assetsToLoad.size; i++) {
+                    assetManager.load(assetsToLoad.get(i));
+                }
+                initialized = true;
+            } else if (assetManager.update()) {
                 done = true;
             }
         }
-    }
-
-    public void unload() {
-        assetManager.clear();
     }
 
     public void dispose() {

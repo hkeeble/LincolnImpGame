@@ -2,10 +2,13 @@ package com.henrik.advergame.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.hud.tables.CreditsTable;
 import com.henrik.gdxFramework.core.GameBase;
@@ -21,7 +24,7 @@ public class Credits extends GameState {
     class ExitListener extends ClickListener {
         @Override
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             music.stop();
 
@@ -37,19 +40,27 @@ public class Credits extends GameState {
 
         setLoadState(new LoadingScreen(assetManager, game.hud));
 
-        addAsset("ui/ui.pack", TextureAtlas.class);
-        addAsset("sounds/select.wav", Sound.class);
+        addAsset("ui/uiTitle/uiTitle.pack", TextureAtlas.class);
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("textures/titleScreen.png", Texture.class);
     }
 
     @Override
     protected void initialize() {
 
-        creditsTable = new CreditsTable(game.getFont("main", 3), game.getFont("main", 2), Game.getUISkin(), new ExitListener());
-        game.hud.getMainTable().setBackground(Game.getUISkin().getDrawable("titleScreen"));
+        Game.setUiSkin(assetManager.get("ui/uiTitle/uiTitle.pack", TextureAtlas.class));
+
+        creditsTable = new CreditsTable(((Game) game).getFont("main", Game.FontSize.SMALL), ((Game) game).getFont("main", Game.FontSize.SMALL), Game.getUISkin(), new ExitListener());
+        game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/titleScreen.png", Texture.class))));
         game.hud.getMainTable().add(creditsTable).center();
 
 
         music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+
+        }
         music.loop();
     }
 

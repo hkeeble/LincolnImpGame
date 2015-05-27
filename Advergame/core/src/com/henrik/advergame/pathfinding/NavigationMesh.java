@@ -49,6 +49,10 @@ public class NavigationMesh {
             }
         }
 
+
+        Vector2 up = new Vector2(), down = new Vector2(), left = new Vector2(), right = new Vector2();
+        Vector2 leftUp = new Vector2(), rightUp = new Vector2(), leftDown = new Vector2(), rightDown = new Vector2();
+
         // Generate links between all accessible nodes
         Iterator iter = meshNodes.entrySet().iterator();
         while(iter.hasNext()) {
@@ -58,7 +62,6 @@ public class NavigationMesh {
             Vector2 pos = meshNodes.get(n.getPosition()).getPosition();
 
             // Horizontal/Vertical directions
-            Vector2 up = new Vector2(), down = new Vector2(), left = new Vector2(), right = new Vector2();
             up.set(pos).add(0, 1 * cellSize);
             down.set(pos).add(0, -1 * cellSize);
             left.set(pos).add(-1 * cellSize, 0);
@@ -78,7 +81,6 @@ public class NavigationMesh {
             }
 
             // Diagonal link tests
-            Vector2 leftUp = new Vector2(), rightUp = new Vector2(), leftDown = new Vector2(), rightDown = new Vector2();
             leftUp.set(pos).add(-1 * cellSize, 1 * cellSize);
             rightUp.set(pos).add(1 * cellSize, 1 * cellSize);
             leftDown.set(pos).add(-1 * cellSize, -1 * cellSize);

@@ -1,9 +1,6 @@
 package com.henrik.gdxFramework.entities.components;
 
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
@@ -29,6 +26,7 @@ public class DecalGraphicsComponent {
 
     protected Vector3 renderOffset;
     protected Vector3 position;
+    protected Vector2 dimensions;
 
     protected float xRotation;
 
@@ -45,19 +43,22 @@ public class DecalGraphicsComponent {
         
         textureRegion = new TextureRegion();
 
+        boundingBox = new BoundingBox();
         trnBoundingBox = new BoundingBox();
         min = new Vector3();
         max = new Vector3();
         position = new Vector3();
+        dimensions = new Vector2();
+
+        decal.setColor(1, 1, 1, 1);
+        decal.setBlending(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }
 
     public DecalGraphicsComponent(float width, float height, TextureRegion textureRegion) {
         this();
         decal = Decal.newDecal(width, height, textureRegion, true);
 
-        boundingBox = new BoundingBox();
-
-        boundingBox = calculateBoundingBox();
+        calculateBoundingBox();
 
         this.billboard = true;
     }
@@ -72,26 +73,19 @@ public class DecalGraphicsComponent {
         this.xRotation = xRotation;
     }
 
-    private BoundingBox calculateBoundingBox() {
-        Vector3 position = decal.getPosition();
-        Vector2 dimensions = new Vector2(decal.getWidth(), decal.getHeight());
+    private void calculateBoundingBox() {
+        position.set(decal.getPosition());
+        dimensions.set(decal.getWidth(), decal.getHeight());
 
         max.set(position.x-(dimensions.x/2), position.y-(dimensions.y/2), position.z-1);
         min.set(position.x+(dimensions.x/2), position.y+(dimensions.y/2), position.z+1);
 
         boundingBox.set(min, max);
-
-        return new BoundingBox(min, max);
     }
 
     public void setTint(Color color) { decal.setColor(color); }
 
     public void render(Camera camera, Renderer renderer, GameObject object) {
-
-        if(boundingBox == null) {
-            boundingBox = new BoundingBox();
-            boundingBox = calculateBoundingBox();
-        }
 
         // Calculate the current bound box from original and the object position
         boundingBox.getMin(min);
@@ -122,10 +116,9 @@ public class DecalGraphicsComponent {
 
     public void setTexture(TextureRegion texture) { decal.setTextureRegion(texture); }
 
-    public void setTexture(Texture texture) {
-    	textureRegion.setTexture(texture);
-    	decal.setTextureRegion(textureRegion);
-    }
+    public void setSize(float width, float height) { decal.setDimensions(width, height); }
+
+    public void setBillboard(boolean billboard) { this.billboard = billboard; }
 
     public boolean isInView() { return inView; }
 }

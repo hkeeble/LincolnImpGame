@@ -14,7 +14,9 @@ public class PauseTable extends Table {
 
     public PauseTable(BitmapFont titleFont, BitmapFont buttonFont, EventListener resumeListener, EventListener resetListener, EventListener mainMenuListener) {
 
-        Label title = HUD.makeLabel(0, 0, Color.BLACK, "PAUSED", titleFont);
+        Label.LabelStyle style = new Label.LabelStyle(titleFont, Color.BLACK);
+
+        Label title = HUD.makeLabel(0, 0, "PAUSED", style);
         Button resumeButton = HUD.makeButton(0, 0, resumeListener, Game.getUISkin().getDrawable("playButton"), Game.getUISkin().getDrawable("playButton"), Game.getUISkin().getDrawable("playButton"));
         Button resetButton = HUD.makeButton(0, 0, resetListener, Game.getUISkin().getDrawable("replayButton"), Game.getUISkin().getDrawable("replayButton"), Game.getUISkin().getDrawable("replayButton"));
         Button mainMenuButton = HUD.makeButton(0, 0, mainMenuListener, Game.getUISkin().getDrawable("exitButton"), Game.getUISkin().getDrawable("exitButton"), Game.getUISkin().getDrawable("exitButton"));

@@ -21,7 +21,7 @@ public abstract class GameState {
         this.game = game;
 
         // Initialize the asset manager
-        assetManager = new AssetManager();
+        assetManager = game.getAssetManager();
 
         // Initialize the asset loadState for this state
         this.loadState = new LoadState(assetManager, game.hud);
@@ -81,6 +81,9 @@ public abstract class GameState {
             loading = false;
             if(!initialized) {
                 initialize();
+               for (int i = 0; i < 10; i++) {
+                    System.gc();
+                } // Encourage garbage collection
                 initialized = true;
             }
         }
@@ -88,7 +91,6 @@ public abstract class GameState {
 
     protected void dispose() {
         loadState.dispose();
-        assetManager.dispose();
     }
 
     /**

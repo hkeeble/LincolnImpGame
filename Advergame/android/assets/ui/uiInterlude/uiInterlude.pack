@@ -1,0 +1,48 @@
+
+uiInterlude.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+debugButton
+  rotate: false
+  xy: 134, 100
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+exitButton
+  rotate: false
+  xy: 2, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+pauseButton
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+playButton
+  rotate: false
+  xy: 68, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+replayButton
+  rotate: false
+  xy: 68, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+uiBackground
+  rotate: false
+  xy: 2, 134
+  size: 245, 103
+  orig: 245, 103
+  offset: 0, 0
+  index: -1

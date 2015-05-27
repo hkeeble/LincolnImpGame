@@ -5,9 +5,11 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.LevelSaveData;
 import com.henrik.advergame.hud.tables.GameOverTable;
@@ -31,7 +33,7 @@ public class GameOver extends GameState {
             music.stop();
             loseMusic.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             game.enableState(TitleScreen.class);
             return super.touchDown(event, x, y, pointer, button);
@@ -44,7 +46,7 @@ public class GameOver extends GameState {
             music.stop();
             loseMusic.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             InGame inGameState = game.getState(InGame.class);
             inGameState.setReplayState();
@@ -68,25 +70,32 @@ public class GameOver extends GameState {
         setLoadState(new LoadingScreen(assetManager, game.hud));
 
         addAsset("textures/sky.png", Texture.class);
-        addAsset("ui/ui.pack", TextureAtlas.class);
+        addAsset("textures/loseScreen.png", Texture.class);
+        addAsset("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class);
 
-        addAsset("sounds/select.wav", Sound.class);
-        addAsset("sounds/lose.wav", Music.class);
-
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("sounds/lose.mp3", Music.class);
+        addAsset("sounds/titleMusic.mp3", Sound.class);
     }
 
     @Override
     protected void initialize() {
+        Game.setUiSkin(assetManager.get("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class));
 
         concreteGame = (Game)game;
         levelData = concreteGame.getSaveGame().getLastPlayedLevelData();
 
-        gameOverTable = new GameOverTable(Game.getFont("main", 5), Game.getFont("main", 4), Game.getUISkin(), concreteGame.getSaveGame(), new ReplayListener(), new ExitListener());
-        game.hud.getMainTable().setBackground(Game.getUISkin().getDrawable("loseScreen"));
+        gameOverTable = new GameOverTable(((Game) game).getFont("main", Game.FontSize.LARGE), ((Game) game).getFont("main", Game.FontSize.LARGE), Game.getUISkin(), concreteGame.getSaveGame(), new ReplayListener(), new ExitListener());
+        game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/loseScreen.png", Texture.class))));
         game.hud.getMainTable().add(gameOverTable).center();
 
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
-        loseMusic = assetManager.get("sounds/lose.wav", Music.class);
+        music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
+        loseMusic = assetManager.get("sounds/lose.mp3", Music.class);
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+
+        }
         loseMusic.play();
 
         musicPlaying = false;
@@ -114,15 +123,11 @@ public class GameOver extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        if(music != null)
-            music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-        if(music != null)
-            music.dispose();
         super.clear();
     }
 

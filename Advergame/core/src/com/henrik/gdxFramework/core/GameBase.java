@@ -36,14 +36,11 @@ public class GameBase {
 
     public HUD hud;
 
-    protected AssetManager fontManager;
+    protected AssetManager assetManager;
 
     protected boolean resized;
 
     private int fpsCap;
-
-    // Game Fonts
-    protected static HashMap<String,BitmapFont> fonts;
 
     public void create () {
         // Initialize list of game states
@@ -63,18 +60,10 @@ public class GameBase {
         profiler = new Profiler();
         debugRenderer = new ShapeRenderer();
 
-        // Initialize fonts
-        fontManager = new AssetManager();
-
-        // Enable FreetypeFontGenerator for loading .ttf fonts
-        FileHandleResolver resolver = new InternalFileHandleResolver();
-        fontManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
-        fontManager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
+        assetManager = new AssetManager();
 
         // Create the game-wide HUD
         hud = new HUD();
-
-        fonts = new HashMap<String,BitmapFont>();
 
         resized = false;
 
@@ -160,17 +149,13 @@ public class GameBase {
     }
     public void dispose () {
         states.dispose();
-        fontManager.dispose();
+        assetManager.dispose();
     }
 
-    public void loadFonts() { }
-
-    public static BitmapFont getFont(String name, int size) {
-        return fonts.get(name + String.valueOf(size));
-    }
 
     public <T> T getState(Class<T> type) {
         return (T)states.get(type);
     }
 
+    public AssetManager getAssetManager() { return assetManager; }
 }

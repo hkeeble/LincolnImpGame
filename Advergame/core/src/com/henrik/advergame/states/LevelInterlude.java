@@ -5,9 +5,11 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.henrik.advergame.Game;
 import com.henrik.advergame.LevelSaveData;
 import com.henrik.advergame.hud.tables.LevelInterludeTable;
@@ -30,7 +32,7 @@ public class LevelInterlude extends GameState {
             music.stop();
             winMusic.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             InGame inGameState = game.getState(InGame.class);
 
@@ -56,7 +58,7 @@ public class LevelInterlude extends GameState {
             music.stop();
             winMusic.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             game.enableState(TitleScreen.class);
             return super.touchDown(event, x, y, pointer, button);
@@ -68,7 +70,7 @@ public class LevelInterlude extends GameState {
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
             music.stop();
 
-            assetManager.get("sounds/select.wav", Sound.class).play();
+            assetManager.get("sounds/select.mp3", Sound.class).play();
 
             InGame inGameState = game.getState(InGame.class);
             inGameState.setReplayState();
@@ -92,27 +94,29 @@ public class LevelInterlude extends GameState {
         setLoadState(new LoadingScreen(assetManager, game.hud));
 
         addAsset("textures/sky.png", Texture.class);
-        addAsset("ui/ui.pack", TextureAtlas.class);
+        addAsset("textures/winScreen.png", Texture.class);
+        addAsset("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class);
 
-        addAsset("sounds/select.wav", Sound.class);
-        addAsset("sounds/win.wav", Music.class);
-
+        addAsset("sounds/select.mp3", Sound.class);
+        addAsset("sounds/titleMusic.mp3", Sound.class);
+        addAsset("sounds/win.mp3", Music.class);
     }
 
     @Override
     protected void initialize() {
+        Game.setUiSkin(assetManager.get("ui/uiInterlude/uiInterlude.pack", TextureAtlas.class));
 
         concreteGame = (Game)game;
         levelData = concreteGame.getSaveGame().getLastPlayedLevelData();
 
-        levelInterludeHUD = new LevelInterludeTable(Game.getFont("main", 5), Game.getFont("main", 4), Game.getUISkin(), concreteGame.getSaveGame(), new ContinueListener(), new ReplayListener(), new ExitListener());
-        game.hud.getMainTable().setBackground(Game.getUISkin().getDrawable("winScreen"));
+        levelInterludeHUD = new LevelInterludeTable(((Game) game).getFont("main", Game.FontSize.LARGE), ((Game) game).getFont("main", Game.FontSize.LARGE), Game.getUISkin(), concreteGame.getSaveGame(), new ContinueListener(), new ReplayListener(), new ExitListener());
+        game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/winScreen.png", Texture.class))));
         game.hud.getMainTable().add(levelInterludeHUD).center();
 
-        winMusic = assetManager.get("sounds/win.wav", Music.class);
+        winMusic = assetManager.get("sounds/win.mp3", Music.class);
         winMusic.play();
 
-        music = Gdx.audio.newSound(Gdx.files.internal("sounds/titleMusic.mp3"));
+        music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
 
         musicPlaying = false;
     }
@@ -139,15 +143,11 @@ public class LevelInterlude extends GameState {
     @Override
     protected void dispose() {
         super.dispose();
-        if(music != null)
-            music.dispose();
         clear();
     }
 
     @Override
     protected void clear() {
-        if(music != null)
-            music.dispose();
         super.clear();
     }
 

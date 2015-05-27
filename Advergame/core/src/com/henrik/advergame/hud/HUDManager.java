@@ -102,8 +102,8 @@ public class HUDManager {
         this.world = world;
         this.game = game;
 
-        dataTable = new InGameDataTable(Game.getFont("main", 3));
-        pauseTable = new PauseTable(Game.getFont("main", 7), Game.getFont("main", 6), new ResumeListener(), new RetryListener(), new ExitListener());
+        dataTable = new InGameDataTable(((Game) game).getFont("main", Game.FontSize.SMALL));
+        pauseTable = new PauseTable(((Game) game).getFont("main", Game.FontSize.LARGE), ((Game) game).getFont("main", Game.FontSize.SMALL), new ResumeListener(), new RetryListener(), new ExitListener());
         pauseButton = HUD.makeButton(0, 0, new PauseListener(), Game.getUISkin().getDrawable("pauseButton"), Game.getUISkin().getDrawable("pauseButton"), Game.getUISkin().getDrawable("pauseButton"));
         pauseOverlay = Game.getUISkin().getDrawable("pauseOverlay");
 

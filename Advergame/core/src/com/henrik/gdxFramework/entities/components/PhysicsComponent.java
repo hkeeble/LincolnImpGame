@@ -90,7 +90,7 @@ public class PhysicsComponent {
             collisionPositionChanges.scl(1f / collisionPositionChangeCount);
             collisionPositionChanges.scl(-1f);
             object.translate(collisionPositionChanges);
-            collisionPositionChanges = new Vector3();
+            collisionPositionChanges.set(0,0,0);
             collisionPositionChangeCount = 0;
         }
 
@@ -98,8 +98,8 @@ public class PhysicsComponent {
         collisionObject.setWorldTransform(object.getTransform());
     }
 
-    public void addCollisionChange(Vector3 positionChange) {
-        collisionPositionChanges.add(positionChange);
+    public void addCollisionChange(float x, float y, float z) {
+        collisionPositionChanges.add(x,y,z);
         collisionPositionChangeCount++;
     }
 
