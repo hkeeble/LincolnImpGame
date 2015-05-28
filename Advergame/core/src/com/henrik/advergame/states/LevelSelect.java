@@ -108,12 +108,14 @@ public class LevelSelect extends GameState {
         game.hud.getMainTable().setBackground(new TextureRegionDrawable(new TextureRegion(assetManager.get("textures/sky.png", Texture.class))));
 
         music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
+        // Ugly, but no way to know if the sound is ready...
         try {
             Thread.sleep(1000);
         } catch (Exception e) {
 
         }
         music.loop();
+        System.gc();
     }
 
     @Override

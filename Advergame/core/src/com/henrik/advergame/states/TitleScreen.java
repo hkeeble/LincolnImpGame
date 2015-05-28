@@ -111,6 +111,7 @@ public class TitleScreen extends GameState {
 
         }
         music.loop();
+        System.gc();
     }
 
     @Override

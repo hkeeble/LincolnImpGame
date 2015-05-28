@@ -99,6 +99,7 @@ public class EndGame extends GameState {
         } catch (Exception e) {
 
         }
+        System.gc();
         music.loop();
     }
 

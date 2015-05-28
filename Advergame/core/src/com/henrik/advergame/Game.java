@@ -38,6 +38,8 @@ public class Game extends GameBase implements ApplicationListener {
 
     private static HashMap<String,BitmapFont> fonts;
 
+
+
     @Override
     public void create () {
         super.create();

@@ -13,10 +13,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cd60953-3420-4091-8fb4-afbd7edebb80" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_1_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_backend_android_1_6_0.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_backend_headless_1_6_0.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_backend_lwjgl_1_6_0.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_backend_robovm_1_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_bullet_1_6_0.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_bullet_platform_1_6_0_natives_desktop.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_freetype_1_6_0.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_freetype_platform_1_6_0_natives_desktop.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_platform_1_6_0_natives_desktop.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\.idea\libraries\gdx_tools_1_6_0.xml" afterPath="" />
@@ -49,7 +53,6 @@
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\assets\textures\floorOutside.png" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\assets\ui\ui.pack" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\android\assets\ui\ui.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\core\src\com\henrik\advergame\components\CannonBallPool.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\images\ui\cathedralFloorButton.png" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\images\ui\cathedralFloorButtonSelected.png" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\images\ui\debugButton.png" afterPath="" />
@@ -65,58 +68,17 @@
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\images\ui\touchBackground.png" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\images\ui\touchKnob.png" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Henri\Desktop\LincolnImpGame\Advergame\images\ui\uiBackground.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/textures/floorBase.png" afterPath="$PROJECT_DIR$/android/assets/textures/floorBase.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/textures/sky.png" afterPath="$PROJECT_DIR$/android/assets/textures/sky.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/textures/titleScreen.png" afterPath="$PROJECT_DIR$/android/assets/textures/titleScreen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/textures/wall1Texture.png" afterPath="$PROJECT_DIR$/android/assets/textures/wall1Texture.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/textures/wall2Texture.png" afterPath="$PROJECT_DIR$/android/assets/textures/wall2Texture.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/textures/wall3Texture.png" afterPath="$PROJECT_DIR$/android/assets/textures/wall3Texture.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/textures/wall4Texture.png" afterPath="$PROJECT_DIR$/android/assets/textures/wall4Texture.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/AngelDog.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/AngelDog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/Cannon.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/Cannon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/CannonBall.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/CannonBall.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/levels/14.txt" afterPath="$PROJECT_DIR$/android/assets/levels/14.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/CreditsTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/CreditsTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/DebugHUD.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/DebugHUD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/DebugTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/DebugTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/DecalGraphicsComponent.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/DecalGraphicsComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop/src/com/henrik/gdxFramework/desktop/DesktopLauncher.java" afterPath="$PROJECT_DIR$/desktop/src/com/henrik/gdxFramework/desktop/DesktopLauncher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/EndGameFinalTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/EndGameFinalTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/EndGameMessageTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/EndGameMessageTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/GameOverTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/GameOverTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameState.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameStateCollection.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameStateCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorld.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorld.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorldCollisionListener.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorldCollisionListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/HUD.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/HUD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/HUDManager.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/HUDManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/HealthComponent.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/components/HealthComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/InGameDataTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/InGameDataTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/Info.plist.xml" afterPath="$PROJECT_DIR$/ios/Info.plist.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/InputHandler.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/InputHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/IntroTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/IntroTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/LevelInterludeTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/LevelInterludeTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/LevelSelectHUD.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/LevelSelectHUD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/LoadState.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/LoadState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/pathfinding/NavigationMesh.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/pathfinding/NavigationMesh.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/PauseTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/PauseTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/PhysicsComponent.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/PhysicsComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/TitleDataTable.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/TitleDataTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/TitleHUD.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/TitleHUD.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java" afterPath="$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/robovm.properties" afterPath="$PROJECT_DIR$/ios/robovm.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/robovm.xml" afterPath="$PROJECT_DIR$/ios/robovm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/saveGame.json" afterPath="$PROJECT_DIR$/android/assets/saveGame.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Advergame.iws" />
@@ -143,42 +105,98 @@
       <file leaf-file-name="GameOver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1159" max-vertical-offset="2397">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4075#4076#0" expanded="true" />
-                <element signature="e#4104#4105#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IOSLauncher.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ios/src/com/henrik/gdxFramework/IOSLauncher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5356551" vertical-offset="0" max-vertical-offset="603">
-              <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="2125">
+              <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="robovm.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ios/robovm.properties">
+      <file leaf-file-name="EndGame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1129" max-vertical-offset="1870">
+              <caret line="101" column="20" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".classpath" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.classpath">
+      <file leaf-file-name="Credits.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.72805506" vertical-offset="495" max-vertical-offset="1581">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InGame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2154" max-vertical-offset="3434">
+              <caret line="160" column="9" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TitleScreen.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1233" max-vertical-offset="2278">
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="113" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadingScreen.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LoadingScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="782">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LevelSelect.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2227">
+              <caret line="117" column="20" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LevelInterlude.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1403" max-vertical-offset="2465">
+              <caret line="118" column="71" selection-start-line="118" selection-start-column="71" selection-end-line="118" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Intro.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="625" max-vertical-offset="1377">
+              <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameBase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2244">
+              <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -1645,7 +1663,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/Renderer.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/utils/RandomUtils.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TimedMessage.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/MessageSequence.java" />
@@ -1663,7 +1680,6 @@
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorld.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/HUDManager.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/HUD.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/InGameDataTable.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/hud/tables/PauseTable.java" />
@@ -1680,30 +1696,32 @@
         <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameStateCollection.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/AngelDog.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/level/Level.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameState.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/components/CannonBallPool.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/CannonBall.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/entities/components/DecalGraphicsComponent.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/systems/mapentities/Cannon.java" />
         <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java" />
-        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java" />
         <option value="$PROJECT_DIR$/ios/robovm.properties" />
         <option value="$PROJECT_DIR$/ios/robovm.xml" />
         <option value="$PROJECT_DIR$/ios/Info.plist.xml" />
+        <option value="$PROJECT_DIR$/android/assets/levels/14.txt" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameState.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java" />
+        <option value="$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-57" />
-    <option name="y" value="37" />
+    <option name="x" value="-30" />
+    <option name="y" value="24" />
     <option name="width" value="1936" />
-    <option name="height" value="1054" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -1732,7 +1750,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1748,52 +1765,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Advergame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Advergame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Advergame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ios" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Advergame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Advergame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ios" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Advergame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Advergame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="desktop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1899,6 +1870,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="gdxFramework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Advergame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Advergame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="henrik" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="advergame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1929,12 +1930,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="states" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1957,7 +1959,7 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="004a27e355d92b1a" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Phone" />
   </component>
-  <component name="RunManager" selected="Application.Desktop">
+  <component name="RunManager" selected="Android Application.android">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -1993,19 +1995,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -2031,6 +2020,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2173,15 +2175,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-57" y="37" width="1936" height="1054" extended-state="0" />
-    <editor active="true" />
+    <frame x="-30" y="24" width="1936" height="1055" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37350705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23127036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2189,7 +2190,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36482084" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33767644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33804348" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2197,10 +2198,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22604166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31270358" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31161782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37350705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2222,7 +2224,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="41" />
+      <option name="time" value="42" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2230,30 +2232,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/systems/TimedMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42549923" vertical-offset="46" max-vertical-offset="1003">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorld.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.25" vertical-offset="1395" max-vertical-offset="7769">
-          <caret line="94" column="19" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/hud/HUDManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1233" max-vertical-offset="2737">
           <caret line="95" column="34" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2310,7 +2292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.447191" vertical-offset="4782" max-vertical-offset="13175">
           <caret line="374" column="27" selection-start-line="374" selection-start-column="27" selection-end-line="374" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2318,7 +2299,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7646104" vertical-offset="668" max-vertical-offset="5185">
           <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2333,17 +2313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.428572" vertical-offset="626" max-vertical-offset="2006">
           <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameStateCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="1343">
-          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2379,20 +2348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
           <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38004246" vertical-offset="1011" max-vertical-offset="1615">
-          <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
-          <folding>
-            <element signature="e#2405#2406#0" expanded="true" />
-            <element signature="e#2440#2441#0" expanded="true" />
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#2650#2651#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2407,65 +2362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40421054" vertical-offset="4398" max-vertical-offset="33252">
           <caret line="311" column="6" selection-start-line="311" selection-start-column="6" selection-end-line="311" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6099656" vertical-offset="495" max-vertical-offset="1564">
-          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5606327" vertical-offset="1381" max-vertical-offset="2091">
-          <caret line="100" column="9" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4467354" vertical-offset="2091" max-vertical-offset="3434">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53264606" vertical-offset="625" max-vertical-offset="1360">
-          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6414763" vertical-offset="1420" max-vertical-offset="2448">
-          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6426117" vertical-offset="1224" max-vertical-offset="2193">
-          <caret line="114" column="9" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LoadingScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35910654" vertical-offset="29" max-vertical-offset="782">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2473,18 +2369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6975945" vertical-offset="274" max-vertical-offset="1581">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54467356" vertical-offset="1264" max-vertical-offset="2295">
-          <caret line="107" column="13" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
-          <folding>
-            <element signature="e#4291#4292#0" expanded="true" />
-            <element signature="e#4320#4321#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2492,7 +2376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6457" max-vertical-offset="23715">
           <caret line="430" column="0" selection-start-line="430" selection-start-column="0" selection-end-line="430" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2500,9 +2383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57630163" vertical-offset="19" max-vertical-offset="2312">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#1316#1324#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2510,7 +2390,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3432602" vertical-offset="9930" max-vertical-offset="10608">
           <caret line="643" column="30" selection-start-line="643" selection-start-column="30" selection-end-line="643" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2518,7 +2397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3322884" vertical-offset="162" max-vertical-offset="1037">
           <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2526,7 +2404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.16697589" vertical-offset="1518" max-vertical-offset="2057">
           <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2534,7 +2411,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7476809" vertical-offset="22" max-vertical-offset="561">
           <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2542,7 +2418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.34032634" vertical-offset="14307" max-vertical-offset="16167">
           <caret line="897" column="51" selection-start-line="897" selection-start-column="51" selection-end-line="897" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2550,15 +2425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33235294" vertical-offset="352" max-vertical-offset="1292">
           <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55498284" vertical-offset="0" max-vertical-offset="2244">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2566,7 +2432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7010309" vertical-offset="0" max-vertical-offset="1054">
           <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2574,15 +2439,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5412371" vertical-offset="110" max-vertical-offset="748">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38659793" vertical-offset="1951" max-vertical-offset="2941">
-          <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2590,38 +2446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23367697" vertical-offset="1326" max-vertical-offset="2057">
           <caret line="111" column="28" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
-          <folding>
-            <element signature="e#1604#1742#0" expanded="true" />
-            <element signature="e#1735#1736#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1159" max-vertical-offset="2397">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4075#4076#0" expanded="true" />
-            <element signature="e#4104#4105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ios/robovm.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.classpath">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2643,8 +2467,144 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ios/src/com/henrik/gdxFramework/IOSLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5356551" vertical-offset="0" max-vertical-offset="603">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.43784994" vertical-offset="0" max-vertical-offset="893">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/robovm.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11422172" vertical-offset="0" max-vertical-offset="893">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.classpath">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/assets/levels/14.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/worlds/GameWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1299" max-vertical-offset="7276">
+          <caret line="120" column="37" selection-start-line="120" selection-start-column="37" selection-end-line="120" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6452145" vertical-offset="0" max-vertical-offset="2975">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameStateCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="1343">
+          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="760" max-vertical-offset="1496">
+          <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/gdxFramework/core/GameBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2244">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/TitleScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1233" max-vertical-offset="2278">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="113" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LoadingScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="782">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelSelect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2227">
+          <caret line="117" column="20" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/LevelInterlude.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1403" max-vertical-offset="2465">
+          <caret line="118" column="71" selection-start-line="118" selection-start-column="71" selection-end-line="118" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/Intro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="625" max-vertical-offset="1377">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/InGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2154" max-vertical-offset="3434">
+          <caret line="160" column="9" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/GameOver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="2125">
+          <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/EndGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1129" max-vertical-offset="1870">
+          <caret line="101" column="20" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/henrik/advergame/states/Credits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72805506" vertical-offset="495" max-vertical-offset="1581">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding />
         </state>
       </provider>

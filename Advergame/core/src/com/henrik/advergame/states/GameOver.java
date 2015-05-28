@@ -96,6 +96,7 @@ public class GameOver extends GameState {
         } catch (Exception e) {
 
         }
+        System.gc();
         loseMusic.play();
 
         musicPlaying = false;

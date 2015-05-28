@@ -61,6 +61,7 @@ public class Credits extends GameState {
         } catch (Exception e) {
 
         }
+        System.gc();
         music.loop();
     }
 

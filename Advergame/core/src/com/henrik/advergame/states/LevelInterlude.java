@@ -117,6 +117,7 @@ public class LevelInterlude extends GameState {
         winMusic.play();
 
         music = assetManager.get("sounds/titleMusic.mp3", Sound.class);
+        System.gc();
 
         musicPlaying = false;
     }

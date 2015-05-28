@@ -81,9 +81,6 @@ public abstract class GameState {
             loading = false;
             if(!initialized) {
                 initialize();
-               for (int i = 0; i < 10; i++) {
-                    System.gc();
-                } // Encourage garbage collection
                 initialized = true;
             }
         }

@@ -69,6 +69,7 @@ public class Intro extends GameState {
         } catch (Exception e) {
 
         }
+        System.gc();
         music.loop();
     }
 
